@@ -9,6 +9,10 @@ import { AboutComponent } from './Components/About.component';
 import { ContactComponent } from './Components/Contact.component';
 import { CalendarComponent } from './Components/Calendar.component';
 import { LoginComponent } from './Components/Account/Login.component';
+import { RegisterComponent } from './Components/Account/Register.component';
+import { ProfileComponent } from './Components/Account/Profile.component';
+import { ChangePasswordComponent } from './Components/Account/ChangePassword.component';
+import { ForgotPasswordComponent } from './Components/Account/ForgotPassword.component';
 
 @Component({
   selector: 'my-Layout', 
@@ -22,6 +26,10 @@ import { LoginComponent } from './Components/Account/Login.component';
 @RouteConfig([
   { path: '/', name: 'Dashboard', component: dashboardComponent, useAsDefault: true },
   { path: '/Login', name: 'Login', component: LoginComponent },
+  { path: '/Register', name: 'Register', component: RegisterComponent },
+  { path: '/Profile', name: 'Profile', component: ProfileComponent },
+  { path: '/ChangePassword', name: 'ChangePassword', component: ChangePasswordComponent },
+  { path: '/ForgotPassword', name: 'ForgotPassword', component: ForgotPasswordComponent },
   { path: '/Product', name: 'Product', component: ProductComponent },
   { path: '/Inbox', name: 'Inbox', component: InboxComponent },
   { path: '/Graphs', name: 'Graphs', component: GraphComponent },

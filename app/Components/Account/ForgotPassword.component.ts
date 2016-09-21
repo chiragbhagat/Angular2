@@ -2,11 +2,10 @@ import { Component, OnInit } from 'angular2/core';
 import { Router } from 'angular2/router';
 
 @Component({
-  selector: 'my-login',
-  templateUrl: 'app/Views/Account/Login.html' 
+  selector: 'my-forgotpassword',
+  templateUrl: 'app/Views/Account/ForgotPassword.html' 
 })
-
-export class LoginComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private _router: Router) {

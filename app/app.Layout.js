@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './Components/dashboard.component', './Components/Product.component', './Components/Graph.component', './Components/Inbox.component', './Components/Settings.component', './Components/About.component', './Components/Contact.component', './Components/Calendar.component', './Components/Account/Login.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './Components/dashboard.component', './Components/Product.component', './Components/Graph.component', './Components/Inbox.component', './Components/Settings.component', './Components/About.component', './Components/Contact.component', './Components/Calendar.component', './Components/Account/Login.component', './Components/Account/Register.component', './Components/Account/Profile.component', './Components/Account/ChangePassword.component', './Components/Account/ForgotPassword.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './Components/dashboard.com
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, dashboard_component_1, Product_component_1, Graph_component_1, Inbox_component_1, Settings_component_1, About_component_1, Contact_component_1, Calendar_component_1, Login_component_1;
+    var core_1, router_1, dashboard_component_1, Product_component_1, Graph_component_1, Inbox_component_1, Settings_component_1, About_component_1, Contact_component_1, Calendar_component_1, Login_component_1, Register_component_1, Profile_component_1, ChangePassword_component_1, ForgotPassword_component_1;
     var AppLayoutComp;
     return {
         setters:[
@@ -46,6 +46,18 @@ System.register(['angular2/core', 'angular2/router', './Components/dashboard.com
             },
             function (Login_component_1_1) {
                 Login_component_1 = Login_component_1_1;
+            },
+            function (Register_component_1_1) {
+                Register_component_1 = Register_component_1_1;
+            },
+            function (Profile_component_1_1) {
+                Profile_component_1 = Profile_component_1_1;
+            },
+            function (ChangePassword_component_1_1) {
+                ChangePassword_component_1 = ChangePassword_component_1_1;
+            },
+            function (ForgotPassword_component_1_1) {
+                ForgotPassword_component_1 = ForgotPassword_component_1_1;
             }],
         execute: function() {
             AppLayoutComp = (function () {
@@ -63,6 +75,10 @@ System.register(['angular2/core', 'angular2/router', './Components/dashboard.com
                     router_1.RouteConfig([
                         { path: '/', name: 'Dashboard', component: dashboard_component_1.dashboardComponent, useAsDefault: true },
                         { path: '/Login', name: 'Login', component: Login_component_1.LoginComponent },
+                        { path: '/Register', name: 'Register', component: Register_component_1.RegisterComponent },
+                        { path: '/Profile', name: 'Profile', component: Profile_component_1.ProfileComponent },
+                        { path: '/ChangePassword', name: 'ChangePassword', component: ChangePassword_component_1.ChangePasswordComponent },
+                        { path: '/ForgotPassword', name: 'ForgotPassword', component: ForgotPassword_component_1.ForgotPasswordComponent },
                         { path: '/Product', name: 'Product', component: Product_component_1.ProductComponent },
                         { path: '/Inbox', name: 'Inbox', component: Inbox_component_1.InboxComponent },
                         { path: '/Graphs', name: 'Graphs', component: Graph_component_1.GraphComponent },
