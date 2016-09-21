@@ -3,7 +3,7 @@ import { Router } from 'angular2/router';
 
 @Component({
   selector: 'my-dashboard',
-  templateUrl: 'app/Views/dashboard.component.html' 
+  templateUrl: 'app/Views/dashboard.html' 
 })
 
 export class dashboardComponent implements OnInit {
