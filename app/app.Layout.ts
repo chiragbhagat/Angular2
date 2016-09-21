@@ -8,6 +8,7 @@ import { SettingsComponent } from './Components/Settings.component';
 import { AboutComponent } from './Components/About.component';
 import { ContactComponent } from './Components/Contact.component';
 import { CalendarComponent } from './Components/Calendar.component';
+import { LoginComponent } from './Components/Account/Login.component';
 
 @Component({
   selector: 'my-Layout', 
@@ -20,6 +21,7 @@ import { CalendarComponent } from './Components/Calendar.component';
  
 @RouteConfig([
   { path: '/', name: 'Dashboard', component: dashboardComponent, useAsDefault: true },
+  { path: '/Login', name: 'Login', component: LoginComponent },
   { path: '/Product', name: 'Product', component: ProductComponent },
   { path: '/Inbox', name: 'Inbox', component: InboxComponent },
   { path: '/Graphs', name: 'Graphs', component: GraphComponent },
