@@ -1,6 +1,7 @@
 import { Component } from 'angular2/core';
-//import { HTTP_PROVIDERS, XHRBackend } from 'angular2/http';
+import { HTTP_PROVIDERS } from 'angular2/http';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import 'rxjs/Rx'; // load the full rxjs 
 // Home
 import { dashboardComponent } from './Components/Home/dashboard.component';
 import { InboxComponent } from './Components/Home/Inbox.component';
@@ -23,7 +24,8 @@ import { LoginComponent } from './Components/Account/Login.component';
   templateUrl: 'app/Views/AppLayout.html',
   directives: [ROUTER_DIRECTIVES],
    providers: [
-    ROUTER_PROVIDERS 
+      //HTTP_PROVIDERS,
+      ROUTER_PROVIDERS 
   ]
 }) 
 

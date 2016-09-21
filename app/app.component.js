@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './Components/Home/dashboard.component', './Components/Home/Inbox.component', './Components/Home/About.component', './Components/Home/Contact.component', './Components/Account/Register.component', './Components/Account/Profile.component', './Components/Account/ChangePassword.component', './Components/Account/ForgotPassword.component', './Components/Product.component', './Components/Graph.component', './Components/Settings.component', './Components/Calendar.component', './Components/Account/Login.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'rxjs/Rx', './Components/Home/dashboard.component', './Components/Home/Inbox.component', './Components/Home/About.component', './Components/Home/Contact.component', './Components/Account/Register.component', './Components/Account/Profile.component', './Components/Account/ChangePassword.component', './Components/Account/ForgotPassword.component', './Components/Product.component', './Components/Graph.component', './Components/Settings.component', './Components/Calendar.component', './Components/Account/Login.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -20,6 +20,7 @@ System.register(['angular2/core', 'angular2/router', './Components/Home/dashboar
             function (router_1_1) {
                 router_1 = router_1_1;
             },
+            function (_1) {},
             function (dashboard_component_1_1) {
                 dashboard_component_1 = dashboard_component_1_1;
             },
@@ -70,6 +71,7 @@ System.register(['angular2/core', 'angular2/router', './Components/Home/dashboar
                         templateUrl: 'app/Views/AppLayout.html',
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [
+                            //HTTP_PROVIDERS,
                             router_1.ROUTER_PROVIDERS
                         ]
                     }),
