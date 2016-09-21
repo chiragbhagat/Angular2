@@ -3,7 +3,7 @@ import { Router } from 'angular2/router';
 
 @Component({
   selector: 'my-about',
-  templateUrl: 'app/Views/About.html' 
+  templateUrl: 'app/Views/Home/About.html' 
 })
 export class AboutComponent implements OnInit {
 

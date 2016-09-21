@@ -30,7 +30,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 InboxComponent = __decorate([
                     core_1.Component({
                         selector: 'my-inbox',
-                        templateUrl: 'app/Views/Inbox.html'
+                        templateUrl: 'app/Views/Home/Inbox.html'
                     }), 
                     __metadata('design:paramtypes', [router_1.Router])
                 ], InboxComponent);

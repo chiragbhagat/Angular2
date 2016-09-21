@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, router_1;
-    var dashboardComponent;
+    var ContactComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -21,23 +21,23 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 router_1 = router_1_1;
             }],
         execute: function() {
-            dashboardComponent = (function () {
-                function dashboardComponent(_router) {
+            ContactComponent = (function () {
+                function ContactComponent(_router) {
                     this._router = _router;
                 }
-                dashboardComponent.prototype.ngOnInit = function () {
+                ContactComponent.prototype.ngOnInit = function () {
                 };
-                dashboardComponent = __decorate([
+                ContactComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-dashboard',
-                        templateUrl: 'app/Views/dashboard.html'
+                        selector: 'my-contact',
+                        templateUrl: 'app/Views/Home/Contact.html'
                     }), 
                     __metadata('design:paramtypes', [router_1.Router])
-                ], dashboardComponent);
-                return dashboardComponent;
+                ], ContactComponent);
+                return ContactComponent;
             }());
-            exports_1("dashboardComponent", dashboardComponent);
+            exports_1("ContactComponent", ContactComponent);
         }
     }
 });
-//# sourceMappingURL=dashboard.component.js.map
+//# sourceMappingURL=Contact.component.js.map

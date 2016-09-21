@@ -30,7 +30,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 AboutComponent = __decorate([
                     core_1.Component({
                         selector: 'my-about',
-                        templateUrl: 'app/Views/About.html'
+                        templateUrl: 'app/Views/Home/About.html'
                     }), 
                     __metadata('design:paramtypes', [router_1.Router])
                 ], AboutComponent);
