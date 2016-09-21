@@ -1,7 +1,7 @@
 /*
 import { Component } from 'angular2/core';
 import { RouterConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
-import { dashboardComponent } from './Components/dashboard.component';
+import { dashboardComponent } from './Components/Home/dashboard.component';
 import { ProductComponent } from './Components/Product.component';
 
 export const appRoutes : RouterConfig = [
