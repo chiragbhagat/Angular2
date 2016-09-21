@@ -1,0 +1,154 @@
+<div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="/#/">Home</a>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="#menu-toggle" id="menu-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left" style="padding-left:100px;">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-envelope"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- If Not Authenticated, show below -->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a id="registerLink" href="/#/register">Register</a> </li>
+                <li><a id="loginLink" href="/#/login">Login</a> </li>
+            </ul>
+            <!-- If Authenticated, show below -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello Demo <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a id="editProfile" href="/#/Account/Profile"><i class="glyphicon glyphicon-user"></i> My Profile</a></li>
+                        <li><a id="changePassword" href="/#/Account/ChangePassword"><i class="glyphicon glyphicon-lock"></i> Change Password</a> </li>
+                        <li class="divider"></li>
+                        <li><a href="/#/"><i class="glyphicon glyphicon-log-out"></i> Log off</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-bell"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-question-sign"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a>Home</a></li>
+                        <li><a>Contact</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="wrapper" style="width:100%">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a [routerLink]="['Dashboard']"><i class="glyphicon glyphicon-home"></i> Dashboard </a>
+                </li>
+                <li>
+                    <a data-toggle="collapse" href="#tables" id="tbl"><i class="glyphicon glyphicon-list"></i> Tables <span class="glyphicon glyphicon-collapse-down"></span></a>
+                    <ul class="panel-collapse collapse" id="tables">
+                        <li><a> Categories</a></li>
+                        <li><a> CustomerCustomerDemo</a></li>
+                        <li><a> CustomerDemographics</a></li>
+                        <li><a> Customers</a></li>
+                        <li><a> Employees</a></li>
+                        <li><a> EmployeeTerritories</a></li>
+                        <li><a> OrderDetails</a></li>
+                        <li><a> Orders</a></li>
+                        <li><a [routerLink]="['Product']">Products</a></li>
+                        <li><a> Region</a></li>
+                        <li><a> Shippers</a></li>
+                        <li><a> Suppliers</a></li>
+                        <li><a> Territories</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a data-toggle="collapse" href="#views" id="tbl"><i class="glyphicon glyphicon-list"></i> Views <span class="glyphicon glyphicon-collapse-down"></span></a>
+                    <ul class="panel-collapse collapse" id="views">
+                        <li><a> Alphabeticallistofproducts</a></li>
+                        <li><a> CategorySalesfor1997</a></li>
+                        <li><a> CurrentProductList</a></li>
+                        <li><a> CustomerandSuppliersbyCity</a></li>
+                        <li><a> Invoices</a></li>
+                        <li><a> OrderDetailsExtended</a></li>
+                        <li><a> OrderSubtotals</a></li>
+                        <li><a> OrdersQry</a></li>
+                        <li><a> ProductSalesfor1997</a></li>
+                        <li><a> ProductsAboveAveragePrice</a></li>
+                        <li><a> ProductsbyCategory</a></li>
+                        <li><a> QuarterlyOrders</a></li>
+                        <li><a> SalesbyCategory</a></li>
+                        <li><a> SalesTotalsbyAmount</a></li>
+                        <li><a> SummaryofSalesbyQuarter</a></li>
+                        <li><a> SummaryofSalesbyYear</a></li>
+                    </ul>
+                </li>
+		<li class="dropdown">
+			<a data-toggle="collapse" href="#adminMenu" id="help"><i class="glyphicon glyphicon-user"></i> Admin <span class="glyphicon glyphicon-collapse-down"></span></a>
+                    <ul class="panel-collapse collapse" id="adminMenu">
+                        <li><a href="/#/UserAdmin">Manage Users</a></li>
+                        <li><a href="/#/RolesAdmin">Manage Roles</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Help"><i class="glyphicon glyphicon-globe"></i> APIs</a></li>
+                <li>
+                    <a [routerLink]="['Inbox']"><i class="glyphicon glyphicon-envelope"></i> Inbox <span class="badge">42</span></a>
+                </li>
+                <li>
+                    <a [routerLink]="['Graphs']"><i class="glyphicon glyphicon-align-left"></i> Graphs </a>
+                </li>
+                <li>
+                    <a [routerLink]="['Calendar']"><i class="glyphicon glyphicon-calendar"></i> Calendar </a>
+                </li>
+                <li>
+                    <a [routerLink]="['Settings']"><i class="glyphicon glyphicon-cog"></i> Settings </a>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="collapse" href="#helpMenu" id="help"><i class="glyphicon glyphicon-question-sign"></i> Help <span class="glyphicon glyphicon-collapse-down"></span></a>
+                    <ul class="panel-collapse collapse" id="helpMenu">
+                        <li><a [routerLink]="['About']">About</a></li>
+                        <li><a [routerLink]="['Contact']">Contact</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+    <div id="page-content-wrapper" style="padding:5px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                            <router-outlet></router-outlet>
+                        <footer>
+                            <br />
+                            <hr />
+                            <p><span>&copy; @DateTime.Now.Year [COMPANY_NAME]. All rights reserved. | My NorthwindKendo MVC Application </span> <span>|</span></p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
