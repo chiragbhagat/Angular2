@@ -2,11 +2,13 @@ import { Component } from 'angular2/core';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import 'rxjs/Rx'; // load the full rxjs 
+
 // Home
 import { dashboardComponent } from './Components/Home/dashboard.component';
 import { InboxComponent } from './Components/Home/Inbox.component';
 import { AboutComponent } from './Components/Home/About.component';
 import { ContactComponent } from './Components/Home/Contact.component';
+
 // Account
 import { RegisterComponent } from './Components/Account/Register.component';
 import { ProfileComponent } from './Components/Account/Profile.component';
@@ -46,5 +48,5 @@ import { LoginComponent } from './Components/Account/Login.component';
 ])
 
 export class AppComponent {
-  title = 'Tour of Heroes new update now ';
+  title = 'Tour of Heroes new update now... ';
 }

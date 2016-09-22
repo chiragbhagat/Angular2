@@ -63,7 +63,7 @@ System.register(['angular2/core', 'angular2/router', 'rxjs/Rx', './Components/Ho
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.title = 'Tour of Heroes new update now ';
+                    this.title = 'Tour of Heroes new update now... ';
                 }
                 AppComponent = __decorate([
                     core_1.Component({
