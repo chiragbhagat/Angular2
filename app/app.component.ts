@@ -26,7 +26,7 @@ import { LoginComponent } from './Components/Account/Login.component';
   templateUrl: 'app/Views/AppLayout.html',
   directives: [ROUTER_DIRECTIVES],
    providers: [
-      //HTTP_PROVIDERS,
+      HTTP_PROVIDERS,
       ROUTER_PROVIDERS 
   ]
 }) 

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Services/Products.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, http_1, Products_service_1;
     var ProductComponent;
     return {
         setters:[
@@ -19,20 +19,54 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (Products_service_1_1) {
+                Products_service_1 = Products_service_1_1;
             }],
         execute: function() {
             ProductComponent = (function () {
-                function ProductComponent(_router) {
+                function ProductComponent(_router, productsService) {
                     this._router = _router;
+                    this.productsService = productsService;
+                    this.changed = new core_1.EventEmitter();
+                    this.messages = [];
+                    this.products = this.productsService.getProducts();
                 }
                 ProductComponent.prototype.ngOnInit = function () {
+                    this.products = this.productsService.getProducts();
                 };
+                ProductComponent.prototype.getProducts = function () {
+                    this.products = this.productsService.getProducts();
+                };
+                ProductComponent.prototype.select = function (selectedProduct) {
+                    this.selectedProduct = selectedProduct;
+                    this.changed.emit(selectedProduct);
+                };
+                ProductComponent.prototype.clear = function () {
+                    this.selectedProduct = null;
+                };
+                ProductComponent.prototype.log = function (msg) {
+                    this.messages.splice(0, 0, msg);
+                    console.log(msg);
+                };
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', Object)
+                ], ProductComponent.prototype, "changed", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Number)
+                ], ProductComponent.prototype, "productId", void 0);
                 ProductComponent = __decorate([
                     core_1.Component({
                         selector: 'my-product',
-                        templateUrl: 'app/Views/Products.html'
+                        templateUrl: 'app/Views/Products.html',
+                        providers: [http_1.HTTP_PROVIDERS, Products_service_1.ProductsService]
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router])
+                    __metadata('design:paramtypes', [router_1.Router, Products_service_1.ProductsService])
                 ], ProductComponent);
                 return ProductComponent;
             }());
