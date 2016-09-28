@@ -11,35 +11,40 @@ import { ProductsData, ProductsService } from '../Services/Products.service';
 })
 
 export class ProductComponent implements OnInit {
-  @Output() changed = new EventEmitter<ProductsData>();
-  @Input() productId: number;
-  products: ProductsData[];
+  //@Output() changed = new EventEmitter<ProductsData>();
+  //@Input() productId: number;
+  products: ProductsData[] = [];
   selectedProduct: ProductsData;
   messages: string[] = [];
   errorMessage: string;
   message: string;
-  jsonString: string;
 
   constructor(private _router: Router, private productsService: ProductsService) {
-      this.products = this.productsService.getProducts();
-      this.message = "This is test!!!"
+      
   }
 
+
   ngOnInit() {
-    this.products = this.productsService.getProducts();
+    this.message = "This is test!!!!";
+    this.getProducts();
+    //this.products = this.productsService.getAll();
   }
 
 
   getProducts() {
-    this.products = this.productsService.getProducts();
-    
+    this.productsService.getAll()
+      .subscribe(
+        data => this.products = data,
+        error => console.log("Error HTTP GET Service"),
+                () => console.log("Job Done Get !")
+    );
   }
-
+/*
   select(selectedProduct: ProductsData) {
     this.selectedProduct = selectedProduct;
     this.changed.emit(selectedProduct);
   }
-
+*/
   clear() {
     this.selectedProduct = null;
   }

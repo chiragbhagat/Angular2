@@ -31,21 +31,27 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                 function ProductComponent(_router, productsService) {
                     this._router = _router;
                     this.productsService = productsService;
-                    this.changed = new core_1.EventEmitter();
+                    //@Output() changed = new EventEmitter<ProductsData>();
+                    //@Input() productId: number;
+                    this.products = [];
                     this.messages = [];
-                    this.products = this.productsService.getProducts();
-                    this.message = "This is test!!!";
                 }
                 ProductComponent.prototype.ngOnInit = function () {
-                    this.products = this.productsService.getProducts();
+                    this.message = "This is test!!!!";
+                    this.getProducts();
+                    //this.products = this.productsService.getAll();
                 };
                 ProductComponent.prototype.getProducts = function () {
-                    this.products = this.productsService.getProducts();
+                    var _this = this;
+                    this.productsService.getAll()
+                        .subscribe(function (data) { return _this.products = data; }, function (error) { return console.log("Error HTTP GET Service"); }, function () { return console.log("Job Done Get !"); });
                 };
-                ProductComponent.prototype.select = function (selectedProduct) {
+                /*
+                  select(selectedProduct: ProductsData) {
                     this.selectedProduct = selectedProduct;
                     this.changed.emit(selectedProduct);
-                };
+                  }
+                */
                 ProductComponent.prototype.clear = function () {
                     this.selectedProduct = null;
                 };
@@ -53,14 +59,6 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                     this.messages.splice(0, 0, msg);
                     console.log(msg);
                 };
-                __decorate([
-                    core_1.Output(), 
-                    __metadata('design:type', Object)
-                ], ProductComponent.prototype, "changed", void 0);
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', Number)
-                ], ProductComponent.prototype, "productId", void 0);
                 ProductComponent = __decorate([
                     core_1.Component({
                         selector: 'my-product',
