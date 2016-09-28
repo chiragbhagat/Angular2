@@ -46,7 +46,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                 };
                 ProductsService.prototype.getAll = function () {
                     var _this = this;
-                    this._http.get(this.baseUrl + "/Products")
+                    this._http.get("http://northwindapi.codebhagat.com/api/Products")
                         .map(function (response) { return response.json(); }).subscribe(function (data) {
                         _this.products = data;
                     }, function (error) { return console.log('Could not load products.'); });

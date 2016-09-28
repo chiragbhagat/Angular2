@@ -13,7 +13,7 @@ export class ProductsData {
 export class ProductsService {
     private baseUrl: string;
     private products: ProductsData[];
-
+    
     constructor(private _http: Http) {
         this.baseUrl = "http://northwindapi.codebhagat.com/api/";
     }
@@ -26,7 +26,7 @@ export class ProductsService {
     }
 
     getAll() {
-        this._http.get(`${this.baseUrl}/Products`)
+        this._http.get("http://northwindapi.codebhagat.com/api/Products")
             .map( (response: Response) => response.json()).subscribe(data => {
                 this.products = data;
             }, error => console.log('Could not load products.'));

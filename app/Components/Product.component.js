@@ -34,6 +34,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                     this.changed = new core_1.EventEmitter();
                     this.messages = [];
                     this.products = this.productsService.getProducts();
+                    this.message = "This is test!!!";
                 }
                 ProductComponent.prototype.ngOnInit = function () {
                     this.products = this.productsService.getProducts();

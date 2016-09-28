@@ -17,9 +17,12 @@ export class ProductComponent implements OnInit {
   selectedProduct: ProductsData;
   messages: string[] = [];
   errorMessage: string;
+  message: string;
+  jsonString: string;
 
   constructor(private _router: Router, private productsService: ProductsService) {
       this.products = this.productsService.getProducts();
+      this.message = "This is test!!!"
   }
 
   ngOnInit() {
