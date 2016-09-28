@@ -37,7 +37,7 @@ export class GraphComponent implements OnInit {
     //headers.append('Access-Control-Allow-Origin', '*');
     return headers;
   }
-
+/*
   toRegion(r:any): Region{
         let region = <Region>({
             RegionID: r.RegionID,
@@ -46,5 +46,5 @@ export class GraphComponent implements OnInit {
         console.log('Parsed region:', region);
         return region;
     }
-
+*/
 }

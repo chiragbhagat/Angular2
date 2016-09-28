@@ -46,14 +46,6 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                     //headers.append('Access-Control-Allow-Origin', '*');
                     return headers;
                 };
-                GraphComponent.prototype.toRegion = function (r) {
-                    var region = ({
-                        RegionID: r.RegionID,
-                        RegionDescription: r.RegionDescription
-                    });
-                    console.log('Parsed region:', region);
-                    return region;
-                };
                 GraphComponent = __decorate([
                     core_1.Component({
                         selector: 'my-graph',
