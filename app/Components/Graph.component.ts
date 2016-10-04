@@ -1,6 +1,7 @@
 import { Component, OnInit } from 'angular2/core';
 import { Router } from 'angular2/router';
 import { Http, Response, Headers } from 'angular2/http';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'my-graph',
@@ -8,9 +9,19 @@ import { Http, Response, Headers } from 'angular2/http';
 })
 
 
+class RegionData {
+    public RegionID: number;
+    public RegionDescription: string;
+    constructor(public regionID: number,
+        public regionDescription: string) {
+            this.RegionID = regionID;
+            this.RegionDescription = regionDescription;
+        }
+}
 
 export class GraphComponent implements OnInit {
-  data: Object;
+  public data: Object;
+  public regions: Observable<RegionData[]>;
 
   constructor(
     public _router: Router,
@@ -19,6 +30,7 @@ export class GraphComponent implements OnInit {
   }
 
   ngOnInit() {
+    //this.getRequest();
   }
 
   makeRequest(): void {
@@ -27,6 +39,23 @@ export class GraphComponent implements OnInit {
       this.data = res.json();
     });
     
+  }
+
+  getRequest(): void {
+    this.http.request('http://northwindapi.codebhagat.com/api/Region', {headers: this.getHeaders()})
+      //.subscribe( (res: Response) => res.json());
+      .map((res:Response) => res.json())
+      .subscribe(
+        data => { this.regions = data},
+        err => console.error(err),
+        () => console.log('done')
+      );
+  }
+
+
+private clone(object: any){
+    // hack
+    return JSON.parse(JSON.stringify(object));
   }
 
     getHeaders(){

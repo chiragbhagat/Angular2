@@ -13,7 +13,7 @@ import { ProductsData, ProductsService } from '../Services/Products.service';
 export class ProductComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
   //@Input() productId: number;
-  products: ProductsData[] = [];
+  products: Observable<ProductsData[]>;
   selectedProduct: ProductsData;
   messages: string[] = [];
   errorMessage: string;
@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
   constructor(private _router: Router, private productsService: ProductsService) {
       
   }
-
+ 
 
   ngOnInit() {
     this.message = "This is test!!!!";
@@ -32,12 +32,8 @@ export class ProductComponent implements OnInit {
 
 
   getProducts() {
-    this.productsService.getAll()
-      .subscribe(
-        data => this.products = data,
-        error => console.log("Error HTTP GET Service"),
-                () => console.log("Job Done Get !")
-    );
+    this.products = this.productsService.getAll();
+    
   }
 /*
   select(selectedProduct: ProductsData) {

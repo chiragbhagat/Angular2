@@ -3,8 +3,34 @@
 Your Graphs here...
 
 <button type="button" (click)="makeRequest()">Make Request</button>
+
+<table>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tbody>
+        <tr *ngFor="#r of data; #i=index">
+            <td>
+                {{r.RegionID}}
+            </td>
+            <td>
+                {{r.RegionDescription}}
+            </td>
+        </tr>
+    </tbody>
+</table>
 <pre>{{data | json}}</pre>
 
+<!--
+<ul>
+    <li *ngFor="let region of regions">{{region.RegionID}}</li>
+</ul>
+-->
 	<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
 	<!-- Google Loader script already loaded in Layouts page -->
 <!--

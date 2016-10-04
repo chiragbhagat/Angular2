@@ -2,7 +2,7 @@ import { Injectable } from 'angular2/core';
 import { Http, Response, Headers } from 'angular2/http';
 import { Observable } from 'rxjs/Rx';
 
-export class ProductsData {
+export class RegionData {
     /*constructor(public id: number,
         public name: string,
         public price: number) {}*/
@@ -17,33 +17,33 @@ export class ProductsData {
 }
 
 @Injectable()
-export class ProductsService {
+export class RegionService {
     baseUrl: string;
-    products: Array<ProductsData>;
+    regions: Observable<RegionData[]>;
     
 
     constructor(private _http: Http) {
         
     }
 
-    getProducts() {
+    getRegions() {
         return [
-            new ProductsData(1, 'Coffee'),
-            new ProductsData(2, 'Tea')
+            new RegionData(1, 'Coffee'),
+            new RegionData(2, 'Tea')
         ];
     }
 
-    getAll() : Observable<ProductsData[]> {
-        let prds = this._http
-            .get(`http://northwindapi.codebhagat.com/api/Region`, {headers: this.getHeaders()})
-            .map(mapProducts);
-        return prds;
-            /*.map( (response: Response) => { 
-                let products = <ProductsData[]> response.json().data;
-                return products;
+    getAll() : Observable<RegionData[]> {
+        this.regions = this._http
+            .request('http://northwindapi.codebhagat.com/api/Region', {headers: this.getHeaders()})
+            .map( (response: Response) => { 
+                let reg = <RegionData[]> response.json();
+                return reg;
             })
             .do(data => console.log(data))
             .catch(this.handleError);
+
+            return this.regions;
             /*.map((products: Array<any>) => {
                 let result:Array<ProductsData> = [];
                 if (products) {
@@ -63,31 +63,34 @@ export class ProductsService {
     //headers.append('Access-Control-Allow-Origin', '*');
     return headers;
   }
+    handleError(error: Response) {
+        console.error(error);
+        return Observable.throw(error.json().error || 'Server error.')
+    }
 }
-    function mapProducts(response:Response): ProductsData[] {
+
+    function mapRegions(response:Response): RegionData[] {
         // The response of the API has a results
         // property with the actual results
-        return response.json().map(toProduct);
+        return response.json().map(toRegion);
     }
-
-    function toProduct(r:any): ProductsData{
-        let product = <ProductsData>({
+    function toRegion(r:any): RegionData{
+        let region = <RegionData>({
             RegionID: r.RegionID,
             RegionDescription: r.RegionDescription
         });
-        console.log('Parsed region:', product);
-        return product;
+        console.log('Parsed region:', region);
+        return region;
     }
+
+
+
 /*
     private extractData(res: Response) {
         let body = res.json();
         return body.data || { };
     }
 
-    private handleError(error: Response) {
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error.')
-    }
     
     private handleError1 (error: any) {
     // In a real world app, we might use a remote logging infrastructure

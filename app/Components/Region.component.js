@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Services/Products.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Services/Region.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, http_1, Products_service_1;
-    var ProductComponent;
+    var core_1, router_1, http_1, Region_service_1;
+    var RegionComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -23,49 +23,44 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
             function (http_1_1) {
                 http_1 = http_1_1;
             },
-            function (Products_service_1_1) {
-                Products_service_1 = Products_service_1_1;
+            function (Region_service_1_1) {
+                Region_service_1 = Region_service_1_1;
             }],
         execute: function() {
-            ProductComponent = (function () {
-                function ProductComponent(_router, productsService) {
+            RegionComponent = (function () {
+                function RegionComponent(_router, regionService) {
                     this._router = _router;
-                    this.productsService = productsService;
+                    this.regionService = regionService;
                     this.messages = [];
                 }
-                ProductComponent.prototype.ngOnInit = function () {
+                RegionComponent.prototype.ngOnInit = function () {
                     this.message = "This is test!!!!";
-                    this.getProducts();
+                    this.regionService.getAll();
+                    this.regions = this.regionService.regions;
                     //this.products = this.productsService.getAll();
                 };
-                ProductComponent.prototype.getProducts = function () {
-                    this.products = this.productsService.getAll();
-                };
                 /*
-                  select(selectedProduct: ProductsData) {
-                    this.selectedProduct = selectedProduct;
-                    this.changed.emit(selectedProduct);
+                  getRegions() : Observable<RegionData[]> {
+                     return this.regionService.getAll();
+                    
                   }
                 */
-                ProductComponent.prototype.clear = function () {
-                    this.selectedProduct = null;
-                };
-                ProductComponent.prototype.log = function (msg) {
+                RegionComponent.prototype.log = function (msg) {
                     this.messages.splice(0, 0, msg);
                     console.log(msg);
                 };
-                ProductComponent = __decorate([
+                RegionComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-product',
-                        templateUrl: 'app/Views/Products.html',
-                        providers: [http_1.HTTP_PROVIDERS, Products_service_1.ProductsService]
+                        selector: 'my-region',
+                        templateUrl: 'app/Views/Region.html',
+                        providers: [http_1.HTTP_PROVIDERS, Region_service_1.RegionService]
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, Products_service_1.ProductsService])
-                ], ProductComponent);
-                return ProductComponent;
+                    __metadata('design:paramtypes', [router_1.Router, Region_service_1.RegionService])
+                ], RegionComponent);
+                return RegionComponent;
             }());
-            exports_1("ProductComponent", ProductComponent);
+            exports_1("RegionComponent", RegionComponent);
         }
     }
 });
-//# sourceMappingURL=Product.component.js.map
+//# sourceMappingURL=Region.component.js.map

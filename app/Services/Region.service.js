@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,20 +10,20 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
-    var ProductsData, ProductsService;
-    function mapProducts(response) {
+    var core_1, http_1, Rx_1;
+    var RegionData, RegionService;
+    function mapRegions(response) {
         // The response of the API has a results
         // property with the actual results
-        return response.json().map(toProduct);
+        return response.json().map(toRegion);
     }
-    function toProduct(r) {
-        var product = ({
+    function toRegion(r) {
+        var region = ({
             RegionID: r.RegionID,
             RegionDescription: r.RegionDescription
         });
-        console.log('Parsed region:', product);
-        return product;
+        console.log('Parsed region:', region);
+        return region;
     }
     return {
         setters:[
@@ -32,39 +32,41 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (Rx_1_1) {
+                Rx_1 = Rx_1_1;
             }],
         execute: function() {
-            ProductsData = (function () {
-                function ProductsData(regionID, regionDescription) {
+            RegionData = (function () {
+                function RegionData(regionID, regionDescription) {
                     this.regionID = regionID;
                     this.regionDescription = regionDescription;
                     this.RegionID = regionID;
                     this.RegionDescription = regionDescription;
                 }
-                return ProductsData;
+                return RegionData;
             }());
-            exports_1("ProductsData", ProductsData);
-            ProductsService = (function () {
-                function ProductsService(_http) {
+            exports_1("RegionData", RegionData);
+            RegionService = (function () {
+                function RegionService(_http) {
                     this._http = _http;
                 }
-                ProductsService.prototype.getProducts = function () {
+                RegionService.prototype.getRegions = function () {
                     return [
-                        new ProductsData(1, 'Coffee'),
-                        new ProductsData(2, 'Tea')
+                        new RegionData(1, 'Coffee'),
+                        new RegionData(2, 'Tea')
                     ];
                 };
-                ProductsService.prototype.getAll = function () {
-                    var prds = this._http
-                        .get("http://northwindapi.codebhagat.com/api/Region", { headers: this.getHeaders() })
-                        .map(mapProducts);
-                    return prds;
-                    /*.map( (response: Response) => {
-                        let products = <ProductsData[]> response.json().data;
-                        return products;
+                RegionService.prototype.getAll = function () {
+                    this.regions = this._http
+                        .request('http://northwindapi.codebhagat.com/api/Region', { headers: this.getHeaders() })
+                        .map(function (response) {
+                        var reg = response.json();
+                        return reg;
                     })
-                    .do(data => console.log(data))
-                    .catch(this.handleError);
+                        .do(function (data) { return console.log(data); })
+                        .catch(this.handleError);
+                    return this.regions;
                     /*.map((products: Array<any>) => {
                         let result:Array<ProductsData> = [];
                         if (products) {
@@ -75,7 +77,7 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                         return result;
                     })*/
                 };
-                ProductsService.prototype.getHeaders = function () {
+                RegionService.prototype.getHeaders = function () {
                     var headers = new http_1.Headers();
                     headers.append('Accept', 'application/json');
                     //headers.append('Access-Control-Allow-Headers', 'Content-Type');
@@ -83,13 +85,17 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     //headers.append('Access-Control-Allow-Origin', '*');
                     return headers;
                 };
-                ProductsService = __decorate([
+                RegionService.prototype.handleError = function (error) {
+                    console.error(error);
+                    return Rx_1.Observable.throw(error.json().error || 'Server error.');
+                };
+                RegionService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
-                ], ProductsService);
-                return ProductsService;
+                ], RegionService);
+                return RegionService;
             }());
-            exports_1("ProductsService", ProductsService);
+            exports_1("RegionService", RegionService);
         }
     }
 });
@@ -99,10 +105,6 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
         return body.data || { };
     }
 
-    private handleError(error: Response) {
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error.')
-    }
     
     private handleError1 (error: any) {
     // In a real world app, we might use a remote logging infrastructure
@@ -112,4 +114,4 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
     console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
   */
-//# sourceMappingURL=Products.service.js.map
+//# sourceMappingURL=Region.service.js.map

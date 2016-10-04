@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'angular2/router', 'rxjs/Rx', './Components/Home/dashboard.component', './Components/Home/Inbox.component', './Components/Home/About.component', './Components/Home/Contact.component', './Components/Account/Register.component', './Components/Account/Profile.component', './Components/Account/ChangePassword.component', './Components/Account/ForgotPassword.component', './Components/Product.component', './Components/Graph.component', './Components/Settings.component', './Components/Calendar.component', './Components/Account/Login.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'angular2/router', 'rxjs/Rx', './Components/Home/dashboard.component', './Components/Home/Inbox.component', './Components/Home/About.component', './Components/Home/Contact.component', './Components/Account/Register.component', './Components/Account/Profile.component', './Components/Account/ChangePassword.component', './Components/Account/ForgotPassword.component', './Components/Product.component', './Components/Region.component', './Components/Graph.component', './Components/Settings.component', './Components/Calendar.component', './Components/Account/Login.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', 'rxjs/Rx',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, dashboard_component_1, Inbox_component_1, About_component_1, Contact_component_1, Register_component_1, Profile_component_1, ChangePassword_component_1, ForgotPassword_component_1, Product_component_1, Graph_component_1, Settings_component_1, Calendar_component_1, Login_component_1;
+    var core_1, http_1, router_1, dashboard_component_1, Inbox_component_1, About_component_1, Contact_component_1, Register_component_1, Profile_component_1, ChangePassword_component_1, ForgotPassword_component_1, Product_component_1, Region_component_1, Graph_component_1, Settings_component_1, Calendar_component_1, Login_component_1;
     var AppComponent;
     return {
         setters:[
@@ -51,6 +51,9 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', 'rxjs/Rx',
             function (Product_component_1_1) {
                 Product_component_1 = Product_component_1_1;
             },
+            function (Region_component_1_1) {
+                Region_component_1 = Region_component_1_1;
+            },
             function (Graph_component_1_1) {
                 Graph_component_1 = Graph_component_1_1;
             },
@@ -86,6 +89,7 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', 'rxjs/Rx',
                         { path: '/ChangePassword', name: 'ChangePassword', component: ChangePassword_component_1.ChangePasswordComponent },
                         { path: '/ForgotPassword', name: 'ForgotPassword', component: ForgotPassword_component_1.ForgotPasswordComponent },
                         { path: '/Product', name: 'Product', component: Product_component_1.ProductComponent },
+                        { path: '/Region', name: 'Region', component: Region_component_1.RegionComponent },
                         { path: '/Inbox', name: 'Inbox', component: Inbox_component_1.InboxComponent },
                         { path: '/Graphs', name: 'Graphs', component: Graph_component_1.GraphComponent },
                         { path: '/Calendar', name: 'Calendar', component: Calendar_component_1.CalendarComponent },
