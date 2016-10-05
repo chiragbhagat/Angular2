@@ -34,16 +34,11 @@ export class RegionService {
     }
 
     getAll() : Observable<RegionData[]> {
-        this.regions = this._http
-            .request('http://northwindapi.codebhagat.com/api/Region', {headers: this.getHeaders()})
-            .map( (response: Response) => { 
-                let reg = <RegionData[]> response.json();
-                return reg;
-            })
+        return this._http
+            .get('http://northwindapi.codebhagat.com/api/Region', {headers: this.getHeaders()})
+            .map(response => response.json())
             .do(data => console.log(data))
             .catch(this.handleError);
-
-            return this.regions;
             /*.map((products: Array<any>) => {
                 let result:Array<ProductsData> = [];
                 if (products) {

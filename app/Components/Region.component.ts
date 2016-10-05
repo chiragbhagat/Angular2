@@ -13,20 +13,17 @@ import { RegionData, RegionService } from '../Services/Region.service';
 export class RegionComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
   //@Input() productId: number;
-  regions: Observable<RegionData[]>;
+  regions: RegionData[];
   messages: string[] = [];
   errorMessage: string;
   message: string;
   
   constructor(private _router: Router, private regionService: RegionService) {
-      
   }
 
   ngOnInit() {
-    this.message = "This is test!!!!";
-    this.regionService.getAll();
-    this.regions = this.regionService.regions;
-    //this.products = this.productsService.getAll();
+      this.message = "This is test!!!!";
+      this.regionService.getAll().subscribe(record => this.regions=record);
   }
 
 /*

@@ -58,15 +58,11 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     ];
                 };
                 RegionService.prototype.getAll = function () {
-                    this.regions = this._http
-                        .request('http://northwindapi.codebhagat.com/api/Region', { headers: this.getHeaders() })
-                        .map(function (response) {
-                        var reg = response.json();
-                        return reg;
-                    })
+                    return this._http
+                        .get('http://northwindapi.codebhagat.com/api/Region', { headers: this.getHeaders() })
+                        .map(function (response) { return response.json(); })
                         .do(function (data) { return console.log(data); })
                         .catch(this.handleError);
-                    return this.regions;
                     /*.map((products: Array<any>) => {
                         let result:Array<ProductsData> = [];
                         if (products) {

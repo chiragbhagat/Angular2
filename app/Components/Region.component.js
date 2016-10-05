@@ -34,10 +34,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                     this.messages = [];
                 }
                 RegionComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     this.message = "This is test!!!!";
-                    this.regionService.getAll();
-                    this.regions = this.regionService.regions;
-                    //this.products = this.productsService.getAll();
+                    this.regionService.getAll().subscribe(function (record) { return _this.regions = record; });
                 };
                 /*
                   getRegions() : Observable<RegionData[]> {
