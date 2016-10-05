@@ -1,5 +1,5 @@
 import { Injectable } from 'angular2/core';
-import { Http, Response, Headers } from 'angular2/http';
+import { Http, Response, Headers, RequestOptions } from 'angular2/http';
 import { Observable } from 'rxjs/Rx';
 
 export class RegionData {
@@ -48,6 +48,16 @@ export class RegionService {
                 }
                 return result;
             })*/
+    }
+    addRegion(regionID:number,regionDescription:string){
+ 
+        let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        let options = new RequestOptions({ headers: headers, method: "post" });
+ 
+        return this._http.post('POST URL', body,options)
+            .map(res => res.json())
+            .catch(this.handleError);
     }
     
   getHeaders(){
