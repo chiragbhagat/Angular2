@@ -38,12 +38,10 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                     this.message = "This is test!!!!";
                     this.regionService.getAll().subscribe(function (record) { return _this.regions = record; });
                 };
-                /*
-                  getRegions() : Observable<RegionData[]> {
-                     return this.regionService.getAll();
-                    
-                  }
-                */
+                RegionComponent.prototype.getRegions = function () {
+                    var _this = this;
+                    this.regionService.getAll().subscribe(function (record) { return _this.regions = record; });
+                };
                 RegionComponent.prototype.log = function (msg) {
                     this.messages.splice(0, 0, msg);
                     console.log(msg);

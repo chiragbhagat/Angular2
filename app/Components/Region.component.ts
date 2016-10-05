@@ -26,12 +26,9 @@ export class RegionComponent implements OnInit {
       this.regionService.getAll().subscribe(record => this.regions=record);
   }
 
-/*
-  getRegions() : Observable<RegionData[]> {
-     return this.regionService.getAll();
-    
+  getRegions() {
+     this.regionService.getAll().subscribe(record => this.regions=record);
   }
-*/
 
   log(msg: string) {
     this.messages.splice(0, 0, msg);
