@@ -24,28 +24,28 @@ export class RegionService {
         
     }
 
-    getRegions() {
-        return [
-            new RegionData(1, 'Coffee'),
-            new RegionData(2, 'Tea')
-        ];
-    }
-
     getAll() : Observable<RegionData[]> {
         return this._http
             .get('http://northwindapi.codebhagat.com/api/Region', {headers: this.getHeaders()})
             .map(response => response.json())
             .do(data => console.log(data))
             .catch(this.handleError);
-            /*.map((products: Array<any>) => {
-                let result:Array<ProductsData> = [];
-                if (products) {
-                    products.forEach((product) => {
-                        result.push(new ProductsData(product.ProductID, product.ProductName, product.UnitPrice));
-                    });
-                }
-                return result;
-            })*/
+    }
+
+    getAllBy(filterExpression: string) : Observable<RegionData[]> {
+        return this._http
+            .get('http://northwindapi.codebhagat.com/api/Region?filterExpression=${filterExpression}', {headers: this.getHeaders()})
+            .map(response => response.json())
+            .do(data => console.log(data))
+            .catch(this.handleError);
+    }
+
+    getAllByPaging(filterExpression: string) : Observable<RegionData[]> {
+        return this._http
+            .get('http://northwindapi.codebhagat.com/api/Region?filterExpression=&sortExpression=RegionID&pageIndex=1&pageSize=10', {headers: this.getHeaders()})
+            .map(response => response.json())
+            .do(data => console.log(data))
+            .catch(this.handleError);
     }
 
     getByID(id: number) : Observable<RegionData> {
@@ -116,6 +116,14 @@ export class RegionService {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error.');
     }
+
+    /*
+    getRegions() {
+        return [
+            new RegionData(1, 'Coffee'),
+            new RegionData(2, 'Tea')
+        ];
+    } */
 }
 
     function mapRegions(response:Response): RegionData[] {

@@ -51,27 +51,26 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                 function RegionService(_http) {
                     this._http = _http;
                 }
-                RegionService.prototype.getRegions = function () {
-                    return [
-                        new RegionData(1, 'Coffee'),
-                        new RegionData(2, 'Tea')
-                    ];
-                };
                 RegionService.prototype.getAll = function () {
                     return this._http
                         .get('http://northwindapi.codebhagat.com/api/Region', { headers: this.getHeaders() })
                         .map(function (response) { return response.json(); })
                         .do(function (data) { return console.log(data); })
                         .catch(this.handleError);
-                    /*.map((products: Array<any>) => {
-                        let result:Array<ProductsData> = [];
-                        if (products) {
-                            products.forEach((product) => {
-                                result.push(new ProductsData(product.ProductID, product.ProductName, product.UnitPrice));
-                            });
-                        }
-                        return result;
-                    })*/
+                };
+                RegionService.prototype.getAllBy = function (filterExpression) {
+                    return this._http
+                        .get('http://northwindapi.codebhagat.com/api/Region?filterExpression=${filterExpression}', { headers: this.getHeaders() })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log(data); })
+                        .catch(this.handleError);
+                };
+                RegionService.prototype.getAllByPaging = function (filterExpression) {
+                    return this._http
+                        .get('http://northwindapi.codebhagat.com/api/Region?filterExpression=&sortExpression=RegionID&pageIndex=1&pageSize=10', { headers: this.getHeaders() })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log(data); })
+                        .catch(this.handleError);
                 };
                 RegionService.prototype.getByID = function (id) {
                     return this._http
