@@ -1,14 +1,35 @@
-<h3>Top Heroes</h3>
 <div class="grid grid-pad">
   <h1>Products List</h1>
-  <p>{{products[0].RegionID}}</p>
-  
-  <!--
-    <ul>
-        <li *ng-for="#product of products">
-          {{ product.RegionID }}
-        </li>
-      </ul>
-      -->
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Action</th>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="#item of products">
+        <td style="width: 100px"><a>Edit</a> <a>Delete</a></td>
+        <td>{{item.ProductID}}</td>
+        <td>{{item.ProductName}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Product Add/Edit</div>
+        <div class="panel-body">
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="Product ID" name="ProductID">
+              <br />
+              <textarea class="form-control" rows="3" placeholder="Product Name" name="ProductName"></textarea>
+              <br />
+              <button type="submit" class="btn btn-primary">Add</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="submit" class="btn btn-warning">Delete</button>
+          </div>
+        </div>
+      </div>
+  </form>
 </div>
  

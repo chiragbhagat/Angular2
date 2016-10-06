@@ -1,7 +1,7 @@
 import { Injectable } from 'angular2/core';
 import { Http, Response, Headers, RequestOptions } from 'angular2/http';
 import { Observable } from 'rxjs/Rx';
-
+ 
 export class RegionData {
     /*constructor(public id: number,
         public name: string,

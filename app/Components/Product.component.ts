@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Rx';
 import { Router } from 'angular2/router';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { ProductsData, ProductsService } from '../Services/Products.service';
-
+ 
 @Component({
   selector: 'my-product',
   templateUrl: 'app/Views/Products.html' , 
@@ -13,7 +13,7 @@ import { ProductsData, ProductsService } from '../Services/Products.service';
 export class ProductComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
   //@Input() productId: number;
-  products: Observable<ProductsData[]>;
+  products: ProductsData[];
   selectedProduct: ProductsData;
   messages: string[] = [];
   errorMessage: string;
@@ -26,15 +26,14 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.message = "This is test!!!!";
-    this.getProducts();
+    this.productsService.getAll().subscribe(record => this.products=record);
     //this.products = this.productsService.getAll();
   }
 
-
   getProducts() {
-    this.products = this.productsService.getAll();
-    
+     this.productsService.getAll().subscribe(record => this.products=record);
   }
+  
 /*
   select(selectedProduct: ProductsData) {
     this.selectedProduct = selectedProduct;

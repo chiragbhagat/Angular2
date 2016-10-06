@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
+    var core_1, http_1, Rx_1;
     var ProductsData, ProductsService;
     function mapProducts(response) {
         // The response of the API has a results
@@ -32,14 +32,17 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (Rx_1_1) {
+                Rx_1 = Rx_1_1;
             }],
         execute: function() {
             ProductsData = (function () {
-                function ProductsData(regionID, regionDescription) {
-                    this.regionID = regionID;
-                    this.regionDescription = regionDescription;
-                    this.RegionID = regionID;
-                    this.RegionDescription = regionDescription;
+                function ProductsData(productID, productName) {
+                    this.productID = productID;
+                    this.productName = productName;
+                    this.ProductID = productID;
+                    this.ProductName = productName;
                 }
                 return ProductsData;
             }());
@@ -48,32 +51,77 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 function ProductsService(_http) {
                     this._http = _http;
                 }
+                ProductsService.prototype.getAll = function () {
+                    return this._http
+                        .get('http://northwindapi.codebhagat.com/api/Products', { headers: this.getHeaders() })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log(data); })
+                        .catch(this.handleError);
+                };
+                ProductsService.prototype.getAllBy = function (filterExpression) {
+                    return this._http
+                        .get('http://northwindapi.codebhagat.com/api/Products?filterExpression=${filterExpression}', { headers: this.getHeaders() })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log(data); })
+                        .catch(this.handleError);
+                };
+                ProductsService.prototype.getAllByPaging = function (filterExpression) {
+                    return this._http
+                        .get('http://northwindapi.codebhagat.com/api/Products?filterExpression=&sortExpression=ProductID&pageIndex=1&pageSize=10', { headers: this.getHeaders() })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log(data); })
+                        .catch(this.handleError);
+                };
+                ProductsService.prototype.getByID = function (id) {
+                    return this._http
+                        .get('http://northwindapi.codebhagat.com/api/Products/' + id, { headers: this.getHeaders() })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log(data); })
+                        .catch(this.handleError);
+                };
+                ProductsService.prototype.addProduct = function (productID, productName) {
+                    var body = JSON.stringify({ "ProductID": productID, "ProductName": productName });
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+                    var options = new http_1.RequestOptions({ headers: headers, method: "post" });
+                    return this._http.post('POST URL', body, options)
+                        .map(function (res) { return res.json(); })
+                        .catch(this.handleError);
+                };
+                ProductsService.prototype.addProductData = function (body) {
+                    var bodyString = JSON.stringify(body); // Stringify payload 
+                    //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+                    var headers1 = new http_1.Headers({ 'Content-Type': 'application/json' });
+                    var options = new http_1.RequestOptions({ headers: headers1, method: "post" });
+                    return this._http.post('POST URL', bodyString, options)
+                        .map(function (res) { return res.json(); })
+                        .catch(this.handleError);
+                };
+                ProductsService.prototype.updateProductData = function (body) {
+                    var bodyString = JSON.stringify(body); // Stringify payload 
+                    //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+                    var headers1 = new http_1.Headers({ 'Content-Type': 'application/json' });
+                    var options = new http_1.RequestOptions({ headers: headers1, method: "post" });
+                    return this._http.put('PUT URL', bodyString, options)
+                        .map(function (res) { return res.json(); })
+                        .catch(this.handleError);
+                };
+                ProductsService.prototype.deleteProduct = function (id) {
+                    //let bodyString = JSON.stringify(body); // Stringify payload 
+                    //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+                    var headers1 = new http_1.Headers({ 'Content-Type': 'application/json' });
+                    var options = new http_1.RequestOptions({ headers: headers1, method: "post" });
+                    return this._http.delete('http://northwindapi.codebhagat.com/api/Products/${id}')
+                        .map(function (res) { return res.json(); })
+                        .catch(this.handleError);
+                };
                 ProductsService.prototype.getProducts = function () {
                     return [
                         new ProductsData(1, 'Coffee'),
                         new ProductsData(2, 'Tea')
                     ];
-                };
-                ProductsService.prototype.getAll = function () {
-                    var prds = this._http
-                        .get("http://northwindapi.codebhagat.com/api/Region", { headers: this.getHeaders() })
-                        .map(mapProducts);
-                    return prds;
-                    /*.map( (response: Response) => {
-                        let products = <ProductsData[]> response.json().data;
-                        return products;
-                    })
-                    .do(data => console.log(data))
-                    .catch(this.handleError);
-                    /*.map((products: Array<any>) => {
-                        let result:Array<ProductsData> = [];
-                        if (products) {
-                            products.forEach((product) => {
-                                result.push(new ProductsData(product.ProductID, product.ProductName, product.UnitPrice));
-                            });
-                        }
-                        return result;
-                    })*/
                 };
                 ProductsService.prototype.getHeaders = function () {
                     var headers = new http_1.Headers();
@@ -82,6 +130,10 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     //headers.append('Access-Control-Allow-Methods', 'GET');
                     //headers.append('Access-Control-Allow-Origin', '*');
                     return headers;
+                };
+                ProductsService.prototype.handleError = function (error) {
+                    console.error(error);
+                    return Rx_1.Observable.throw(error.json().error || 'Server error.');
                 };
                 ProductsService = __decorate([
                     core_1.Injectable(), 

@@ -34,12 +34,14 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                     this.messages = [];
                 }
                 ProductComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     this.message = "This is test!!!!";
-                    this.getProducts();
+                    this.productsService.getAll().subscribe(function (record) { return _this.products = record; });
                     //this.products = this.productsService.getAll();
                 };
                 ProductComponent.prototype.getProducts = function () {
-                    this.products = this.productsService.getAll();
+                    var _this = this;
+                    this.productsService.getAll().subscribe(function (record) { return _this.products = record; });
                 };
                 /*
                   select(selectedProduct: ProductsData) {
