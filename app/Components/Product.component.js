@@ -34,14 +34,25 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                     this.messages = [];
                 }
                 ProductComponent.prototype.ngOnInit = function () {
-                    var _this = this;
                     this.message = "This is test!!!!";
-                    this.productsService.getAll().subscribe(function (record) { return _this.products = record; });
-                    //this.products = this.productsService.getAll();
+                    //this.productsService.getAll().subscribe(record => this.products=record);
+                    this.getProducts();
                 };
                 ProductComponent.prototype.getProducts = function () {
                     var _this = this;
                     this.productsService.getAll().subscribe(function (record) { return _this.products = record; });
+                };
+                ProductComponent.prototype.getProductsBy = function () {
+                    var _this = this;
+                    this.productsService.getAllBy("CategoryID=1").subscribe(function (record) { return _this.products = record; });
+                };
+                ProductComponent.prototype.getProductsByPaging = function () {
+                    var _this = this;
+                    this.productsService.getAllByPaging("CategoryID=1").subscribe(function (record) { return _this.products = record; });
+                };
+                ProductComponent.prototype.getProductsByID = function () {
+                    var _this = this;
+                    this.productsService.getByID(1).subscribe(function (record) { return _this.selectedProduct = record; });
                 };
                 /*
                   select(selectedProduct: ProductsData) {

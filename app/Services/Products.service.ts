@@ -42,15 +42,16 @@ export class ProductsService {
 
     getAllBy(filterExpression: string) : Observable<ProductsData[]> {
         return this._http
-            .get('http://northwindapi.codebhagat.com/api/Products?filterExpression=${filterExpression}', {headers: this.getHeaders()})
+            .get(`http://northwindapi.codebhagat.com/api/Products?filterExpression=\"${filterExpression}\"`, {headers: this.getHeaders()})
             .map(response => response.json())
             .do(data => console.log(data))
             .catch(this.handleError);
     }
 
     getAllByPaging(filterExpression: string) : Observable<ProductsData[]> {
+        var url = "http://northwindapi.codebhagat.com/api/Products?filterExpression=" + filterExpression + "&sortExpression=ProductID&pageIndex=1&pageSize=10";
         return this._http
-            .get('http://northwindapi.codebhagat.com/api/Products?filterExpression=&sortExpression=ProductID&pageIndex=1&pageSize=10', {headers: this.getHeaders()})
+            .get(url, {headers: this.getHeaders()})
             .map(response => response.json())
             .do(data => console.log(data))
             .catch(this.handleError);

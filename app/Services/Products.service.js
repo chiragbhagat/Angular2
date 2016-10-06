@@ -47,14 +47,15 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                 };
                 ProductsService.prototype.getAllBy = function (filterExpression) {
                     return this._http
-                        .get('http://northwindapi.codebhagat.com/api/Products?filterExpression=${filterExpression}', { headers: this.getHeaders() })
+                        .get("http://northwindapi.codebhagat.com/api/Products?filterExpression=\"" + filterExpression + "\"", { headers: this.getHeaders() })
                         .map(function (response) { return response.json(); })
                         .do(function (data) { return console.log(data); })
                         .catch(this.handleError);
                 };
                 ProductsService.prototype.getAllByPaging = function (filterExpression) {
+                    var url = "http://northwindapi.codebhagat.com/api/Products?filterExpression=" + filterExpression + "&sortExpression=ProductID&pageIndex=1&pageSize=10";
                     return this._http
-                        .get('http://northwindapi.codebhagat.com/api/Products?filterExpression=&sortExpression=ProductID&pageIndex=1&pageSize=10', { headers: this.getHeaders() })
+                        .get(url, { headers: this.getHeaders() })
                         .map(function (response) { return response.json(); })
                         .do(function (data) { return console.log(data); })
                         .catch(this.handleError);

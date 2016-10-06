@@ -26,14 +26,26 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.message = "This is test!!!!";
-    this.productsService.getAll().subscribe(record => this.products=record);
-    //this.products = this.productsService.getAll();
+    //this.productsService.getAll().subscribe(record => this.products=record);
+    this.getProducts();
   }
 
   getProducts() {
      this.productsService.getAll().subscribe(record => this.products=record);
   }
   
+  getProductsBy() {
+     this.productsService.getAllBy("CategoryID=1").subscribe(record => this.products=record);
+  }
+
+  getProductsByPaging() {
+     this.productsService.getAllByPaging("CategoryID=1").subscribe(record => this.products=record);
+  }
+
+  getProductsByID() {
+     this.productsService.getByID(1).subscribe(record => this.selectedProduct=record);
+  }
+
 /*
   select(selectedProduct: ProductsData) {
     this.selectedProduct = selectedProduct;
