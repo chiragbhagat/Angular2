@@ -1,18 +1,37 @@
-<h3>Top Heroes</h3>
 <div class="grid grid-pad">
   <h1>Regions List</h1>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Description</th>
-  </tr>
-  <tbody>
-    <tr *ngFor="#item of regions">
-      <td>{{item.RegionID}}</td>
-      <td>{{item.RegionDescription}}</td>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Action</th>
+      <th>ID</th>
+      <th>Description</th>
     </tr>
-  </tbody>
-</table>
-      
+    <tbody>
+      <tr *ngFor="#item of regions">
+        <td style="width: 100px"><a>Edit</a> <a>Delete</a></td>
+        <td>{{item.RegionID}}</td>
+        <td>{{item.RegionDescription}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Region Add/Edit</div>
+        <div class="panel-body">
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="Region ID" name="RegionID">
+              <br />
+              <textarea class="form-control" rows="3" placeholder="Region Description" name="RegionDescription"></textarea>
+              <br />
+              <button type="submit" class="btn btn-primary">Add</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="submit" class="btn btn-warning">Delete</button>
+          </div>
+        </div>
+      </div>
+  </form>
+
+
 </div>
  

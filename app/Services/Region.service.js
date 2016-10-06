@@ -73,6 +73,51 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                         return result;
                     })*/
                 };
+                RegionService.prototype.getByID = function (id) {
+                    return this._http
+                        .get('http://northwindapi.codebhagat.com/api/Region/' + id, { headers: this.getHeaders() })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log(data); })
+                        .catch(this.handleError);
+                };
+                RegionService.prototype.addRegion = function (regionID, regionDescription) {
+                    var body = JSON.stringify({ "RegionID": regionID, "RegionDescription": regionDescription });
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+                    var options = new http_1.RequestOptions({ headers: headers, method: "post" });
+                    return this._http.post('POST URL', body, options)
+                        .map(function (res) { return res.json(); })
+                        .catch(this.handleError);
+                };
+                RegionService.prototype.addRegionData = function (body) {
+                    var bodyString = JSON.stringify(body); // Stringify payload 
+                    //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+                    var headers1 = new http_1.Headers({ 'Content-Type': 'application/json' });
+                    var options = new http_1.RequestOptions({ headers: headers1, method: "post" });
+                    return this._http.post('POST URL', bodyString, options)
+                        .map(function (res) { return res.json(); })
+                        .catch(this.handleError);
+                };
+                RegionService.prototype.updateRegionData = function (body) {
+                    var bodyString = JSON.stringify(body); // Stringify payload 
+                    //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+                    var headers1 = new http_1.Headers({ 'Content-Type': 'application/json' });
+                    var options = new http_1.RequestOptions({ headers: headers1, method: "post" });
+                    return this._http.put('PUT URL', bodyString, options)
+                        .map(function (res) { return res.json(); })
+                        .catch(this.handleError);
+                };
+                RegionService.prototype.deleteRegion = function (id) {
+                    //let bodyString = JSON.stringify(body); // Stringify payload 
+                    //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+                    var headers1 = new http_1.Headers({ 'Content-Type': 'application/json' });
+                    var options = new http_1.RequestOptions({ headers: headers1, method: "post" });
+                    return this._http.delete('http://northwindapi.codebhagat.com/api/Region/${id}')
+                        .map(function (res) { return res.json(); })
+                        .catch(this.handleError);
+                };
                 RegionService.prototype.getHeaders = function () {
                     var headers = new http_1.Headers();
                     headers.append('Accept', 'application/json');

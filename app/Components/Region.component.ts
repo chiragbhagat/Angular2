@@ -14,6 +14,7 @@ export class RegionComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
   //@Input() productId: number;
   regions: RegionData[];
+  region: RegionData;
   messages: string[] = [];
   errorMessage: string;
   message: string;
