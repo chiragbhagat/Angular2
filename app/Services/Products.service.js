@@ -12,19 +12,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
     };
     var core_1, http_1, Rx_1;
     var ProductsData, ProductsService;
-    function mapProducts(response) {
-        // The response of the API has a results
-        // property with the actual results
-        return response.json().map(toProduct);
-    }
-    function toProduct(r) {
-        var product = ({
-            RegionID: r.RegionID,
-            RegionDescription: r.RegionDescription
-        });
-        console.log('Parsed region:', product);
-        return product;
-    }
     return {
         setters:[
             function (core_1_1) {
@@ -145,6 +132,22 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
         }
     }
 });
+/*
+    function mapProducts(response:Response): ProductsData[] {
+        // The response of the API has a results
+        // property with the actual results
+        return response.json().map(toProduct);
+    }
+
+    function toProduct(r:any): ProductsData{
+        let product = <ProductsData>({
+            RegionID: r.RegionID,
+            RegionDescription: r.RegionDescription
+        });
+        console.log('Parsed region:', product);
+        return product;
+    }
+    */
 /*
     private extractData(res: Response) {
         let body = res.json();

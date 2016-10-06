@@ -8,6 +8,14 @@ export class ProductsData {
         public price: number) {}*/
     public ProductID: number;
     public ProductName: string;
+    public SupplierID: number;
+    public CategoryID: number;
+    public QuantityPerUnit: string;
+    public UnitPrice: number;
+    public UnitsInStock: number;
+    public UnitsOnOrder: number;
+    public ReorderLevel: number;
+    public Discontinued: boolean;
 
     constructor(public productID: number,
         public productName: string) {
@@ -136,6 +144,8 @@ export class ProductsService {
             })*/
 
 }
+
+/*
     function mapProducts(response:Response): ProductsData[] {
         // The response of the API has a results
         // property with the actual results
@@ -150,6 +160,7 @@ export class ProductsService {
         console.log('Parsed region:', product);
         return product;
     }
+    */
 /*
     private extractData(res: Response) {
         let body = res.json();
