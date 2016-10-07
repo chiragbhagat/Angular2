@@ -1,14 +1,22 @@
 import { Component, EventEmitter, Input, Output, OnInit } from 'angular2/core';
 import { Observable } from 'rxjs/Rx';
-import { Router } from 'angular2/router';
+import { Router, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { ProductsData, ProductsService } from '../Services/Products.service';
  
 @Component({
   selector: 'my-product',
   templateUrl: 'app/Views/Products.html' , 
-  providers: [HTTP_PROVIDERS, ProductsService]
+  providers: [HTTP_PROVIDERS, ROUTER_DIRECTIVES, ProductsService]
 })
+
+// Child Router Configuration
+/*
+@RouteConfig([
+  {path: '/', name: '', component: ProductComponent, useAsDefault: true},
+  {path: '/:id', name: '', component: ProductDetailsComponent, useAsDefault: true},
+])
+*/
 
 export class ProductComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
