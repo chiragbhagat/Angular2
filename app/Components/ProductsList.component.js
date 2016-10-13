@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, router_1, http_1, Products_service_1;
-    var ProductComponent;
+    var ProductsListComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -27,31 +27,34 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                 Products_service_1 = Products_service_1_1;
             }],
         execute: function() {
-            ProductComponent = (function () {
-                function ProductComponent(_router, productsService) {
+            ProductsListComponent = (function () {
+                function ProductsListComponent(_router, productsService) {
                     this._router = _router;
                     this.productsService = productsService;
                     this.messages = [];
                 }
-                ProductComponent.prototype.ngOnInit = function () {
+                ProductsListComponent.prototype.ngOnInit = function () {
                     this.message = "This is test!!!!";
                     //this.productsService.getAll().subscribe(record => this.products=record);
                     this.getProducts();
                 };
-                ProductComponent.prototype.getProducts = function () {
+                ProductsListComponent.prototype.getProducts = function () {
                     var _this = this;
                     this.productsService.getAll().subscribe(function (record) { return _this.products = record; });
                     this.productsService.getByID(1).subscribe(function (record) { return _this.selectedProduct = record; });
                 };
-                ProductComponent.prototype.getProductsBy = function () {
+                ProductsListComponent.prototype.SelectProduct = function (item) {
+                    this.selectedProduct = item;
+                };
+                ProductsListComponent.prototype.getProductsBy = function () {
                     var _this = this;
                     this.productsService.getAllBy("CategoryID=1").subscribe(function (record) { return _this.products = record; });
                 };
-                ProductComponent.prototype.getProductsByPaging = function () {
+                ProductsListComponent.prototype.getProductsByPaging = function () {
                     var _this = this;
                     this.productsService.getAllByPaging("CategoryID=1").subscribe(function (record) { return _this.products = record; });
                 };
-                ProductComponent.prototype.getProductsByID = function () {
+                ProductsListComponent.prototype.getProductsByID = function () {
                     var _this = this;
                     this.productsService.getByID(1).subscribe(function (record) { return _this.selectedProduct = record; });
                 };
@@ -61,25 +64,25 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                     this.changed.emit(selectedProduct);
                   }
                 */
-                ProductComponent.prototype.clear = function () {
+                ProductsListComponent.prototype.clear = function () {
                     this.selectedProduct = null;
                 };
-                ProductComponent.prototype.log = function (msg) {
+                ProductsListComponent.prototype.log = function (msg) {
                     this.messages.splice(0, 0, msg);
                     console.log(msg);
                 };
-                ProductComponent = __decorate([
+                ProductsListComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-product',
+                        selector: 'productsList',
                         templateUrl: 'app/Views/Products.html',
                         providers: [http_1.HTTP_PROVIDERS, router_1.ROUTER_DIRECTIVES, Products_service_1.ProductsService]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, Products_service_1.ProductsService])
-                ], ProductComponent);
-                return ProductComponent;
+                ], ProductsListComponent);
+                return ProductsListComponent;
             }());
-            exports_1("ProductComponent", ProductComponent);
+            exports_1("ProductsListComponent", ProductsListComponent);
         }
     }
 });
-//# sourceMappingURL=Product.component.js.map
+//# sourceMappingURL=ProductsList.component.js.map

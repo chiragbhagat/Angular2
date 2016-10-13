@@ -1,5 +1,6 @@
 <div class="grid grid-pad">
   <h1>Products List</h1>
+  <div *ngIf="selectedProduct">Product Name: {{selectedProduct.ProductName}} (ID: {{selectedProduct.ProductID}})</div>
   <table class="table table-bordered table-striped table-condensed">
     <tr>
       <th>Action</th>
@@ -16,7 +17,7 @@
     </tr>
     <tbody>
       <tr *ngFor="#item of products">
-        <td style="width: 100px"><a>Edit</a> <a>Delete</a></td>
+        <td style="width: 100px"><a (click)="SelectProduct(item)">Select</a> <a>Delete</a></td>
         <td>{{item.ProductID}}</td>
         <td>{{item.ProductName}}</td>
         <td>{{item.SupplierID}}</td>

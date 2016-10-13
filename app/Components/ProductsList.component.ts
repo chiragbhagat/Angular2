@@ -5,7 +5,7 @@ import { HTTP_PROVIDERS } from 'angular2/http';
 import { ProductsData, ProductsService } from '../Services/Products.service';
  
 @Component({
-  selector: 'my-product',
+  selector: 'productsList',
   templateUrl: 'app/Views/Products.html' , 
   providers: [HTTP_PROVIDERS, ROUTER_DIRECTIVES, ProductsService]
 })
@@ -17,8 +17,8 @@ import { ProductsData, ProductsService } from '../Services/Products.service';
   {path: '/:id', name: '', component: ProductDetailsComponent, useAsDefault: true},
 ])
 */
-
-export class ProductComponent implements OnInit {
+ 
+export class ProductsListComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
   //@Input() productId: number;
   products: ProductsData[];
@@ -36,7 +36,6 @@ export class ProductComponent implements OnInit {
     this.message = "This is test!!!!";
     //this.productsService.getAll().subscribe(record => this.products=record);
     this.getProducts();
-
   }
 
   getProducts() {
@@ -44,6 +43,9 @@ export class ProductComponent implements OnInit {
      this.productsService.getByID(1).subscribe(record => this.selectedProduct=record);
   }
   
+  SelectProduct(item: ProductsData) {
+      this.selectedProduct = item;
+  }
   getProductsBy() {
      this.productsService.getAllBy("CategoryID=1").subscribe(record => this.products=record);
   }

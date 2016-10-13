@@ -16,6 +16,8 @@ import { ChangePasswordComponent } from './Components/Account/ChangePassword.com
 import { ForgotPasswordComponent } from './Components/Account/ForgotPassword.component';
 
 import { ProductComponent } from './Components/Product.component';
+//import { ProductsMainComponent } from './Components/ProductsMain.component';
+import { ProductsListComponent } from './Components/ProductsList.component';
 import { RegionComponent } from './Components/Region.component';
 import { GraphComponent } from './Components/Graph.component';
 import { SettingsComponent } from './Components/Settings.component';
@@ -39,7 +41,9 @@ import { LoginComponent } from './Components/Account/Login.component';
   { path: '/Profile', name: 'Profile', component: ProfileComponent },
   { path: '/ChangePassword', name: 'ChangePassword', component: ChangePasswordComponent },
   { path: '/ForgotPassword', name: 'ForgotPassword', component: ForgotPasswordComponent },
-  { path: '/Product', name: 'Product', component: ProductComponent },
+  //{ path: '/ProductsMain/...', name: 'ProductsMain', component: ProductsMainComponent },
+  //{ path: '/Product', name: 'Product', component: ProductComponent },
+  { path: '/Products', name: 'Products', component: ProductsListComponent },
   { path: '/Region', name: 'Region', component: RegionComponent },
   { path: '/Inbox', name: 'Inbox', component: InboxComponent },
   { path: '/Graphs', name: 'Graphs', component: GraphComponent },
