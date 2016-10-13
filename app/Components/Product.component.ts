@@ -40,20 +40,39 @@ export class ProductComponent implements OnInit {
   }
 
   getProducts() {
+
      this.productsService.getAll().subscribe(record => this.products=record);
      this.productsService.getByID(1).subscribe(record => this.selectedProduct=record);
+
+     this.productsService.getAll()
+      .subscribe(
+          record => this.products=record,
+          error => this.errorMessage = <any> error
+      );
+
   }
   
   getProductsBy() {
-     this.productsService.getAllBy("CategoryID=1").subscribe(record => this.products=record);
+     this.productsService.getAllBy("CategoryID=1")
+      .subscribe(
+          record => this.products=record,
+          error => this.errorMessage = <any> error
+      );
   }
 
   getProductsByPaging() {
-     this.productsService.getAllByPaging("CategoryID=1").subscribe(record => this.products=record);
+     this.productsService.getAllByPaging("CategoryID=1")
+      .subscribe(
+          record => this.products=record,
+          error => this.errorMessage = <any> error
+      );
   }
 
   getProductsByID() {
-     this.productsService.getByID(1).subscribe(record => this.selectedProduct=record);
+     this.productsService.getByID(1).subscribe(
+          record => this.selectedProduct=record,
+          error => this.errorMessage = <any> error
+        );
   }
 
 /*

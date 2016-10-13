@@ -42,18 +42,22 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                     var _this = this;
                     this.productsService.getAll().subscribe(function (record) { return _this.products = record; });
                     this.productsService.getByID(1).subscribe(function (record) { return _this.selectedProduct = record; });
+                    this.productsService.getAll()
+                        .subscribe(function (record) { return _this.products = record; }, function (error) { return _this.errorMessage = error; });
                 };
                 ProductComponent.prototype.getProductsBy = function () {
                     var _this = this;
-                    this.productsService.getAllBy("CategoryID=1").subscribe(function (record) { return _this.products = record; });
+                    this.productsService.getAllBy("CategoryID=1")
+                        .subscribe(function (record) { return _this.products = record; }, function (error) { return _this.errorMessage = error; });
                 };
                 ProductComponent.prototype.getProductsByPaging = function () {
                     var _this = this;
-                    this.productsService.getAllByPaging("CategoryID=1").subscribe(function (record) { return _this.products = record; });
+                    this.productsService.getAllByPaging("CategoryID=1")
+                        .subscribe(function (record) { return _this.products = record; }, function (error) { return _this.errorMessage = error; });
                 };
                 ProductComponent.prototype.getProductsByID = function () {
                     var _this = this;
-                    this.productsService.getByID(1).subscribe(function (record) { return _this.selectedProduct = record; });
+                    this.productsService.getByID(1).subscribe(function (record) { return _this.selectedProduct = record; }, function (error) { return _this.errorMessage = error; });
                 };
                 /*
                   select(selectedProduct: ProductsData) {
