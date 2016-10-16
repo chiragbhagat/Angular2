@@ -14,7 +14,7 @@ export class RegionComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
   //@Input() productId: number;
   regions: RegionData[];
-  region: RegionData;
+  selectedRegion: RegionData;
   messages: string[] = [];
   errorMessage: string;
   message: string;
@@ -25,10 +25,15 @@ export class RegionComponent implements OnInit {
   ngOnInit() {
       this.message = "This is test!!!!";
       this.regionService.getAll().subscribe(record => this.regions=record);
+
   }
 
   getRegions() {
      this.regionService.getAll().subscribe(record => this.regions=record);
+  }
+
+  SelectRegion(item: RegionData) {
+      this.selectedRegion = item;
   }
 
   log(msg: string) {

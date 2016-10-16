@@ -1,21 +1,22 @@
 <div class="grid grid-pad">
   <h1>Regions List</h1>
+  <div *ngIf="selectedRegion">Region Name: {{selectedRegion.RegionDescription}} (ID: {{selectedRegion.RegionID}})</div>
   <table class="table table-bordered table-striped table-condensed">
-    <tr>
+    <tr> 
       <th>Action</th>
       <th>ID</th>
       <th>Description</th>
     </tr>
     <tbody>
       <tr *ngFor="#item of regions">
-        <td style="width: 100px"><a>Edit</a> <a>Delete</a></td>
+        <td style="width: 100px"><a (click)="SelectRegion(item)">Edit</a> <a>Delete</a></td>
         <td>{{item.RegionID}}</td>
         <td>{{item.RegionDescription}}</td>
       </tr>
     </tbody>
   </table>
 
-  <form>
+  <form (submit)="submitForm()">
       <div class="panel panel-primary">
         <div class="panel-heading">Region Add/Edit</div>
         <div class="panel-body">
