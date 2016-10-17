@@ -36,6 +36,20 @@ export class RegionComponent implements OnInit {
       this.selectedRegion = item;
   }
 
+  submitForm(data: Object) {
+    console.log(data);
+  }
+
+  AddRegion() {
+      this.regionService.addRegionData();
+      this.getRegions();
+  }
+
+  UpdateRegion() {
+      this.regionService.updateRegionData(this.selectedRegion);
+      this.getRegions();
+  }
+
   log(msg: string) {
     this.messages.splice(0, 0, msg);
     console.log(msg);

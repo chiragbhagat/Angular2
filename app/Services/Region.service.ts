@@ -64,31 +64,54 @@ export class RegionService {
  
         return this._http.post('POST URL', body,options)
             .map(res => res.json())
-            .catch(this.handleError);
-    }
-    
-    addRegionData(body:Object) {
-        let bodyString = JSON.stringify(body); // Stringify payload 
-        //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        let headers1 = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers1, method: "post" });
- 
-        return this._http.post('POST URL', bodyString, options)
-            .map(res => res.json())
+            .do(data => console.log(data))
             .catch(this.handleError);
     }
 
-    updateRegionData(body:Object) {
-        let bodyString = JSON.stringify(body); // Stringify payload 
-        //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        let headers1 = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers1, method: "post" });
+    addRegionData() {
+        // let headers = new Headers();
+        // //headers.append('Accept', 'application/json');
+        // headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        // //headers.append('Cache-Control', 'no-cache');
+        // let bodyString = JSON.stringify(body); // Stringify payload 
+        // //let options = new RequestOptions({ headers: headers });
+        // //let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
  
-        return this._http.put('PUT URL', bodyString, options)
+        // return this._http.post('http://localhost:37299/api/Region', bodyString, headers)
+        // .map((res: Response) => res.json())
+        // .subscribe((data: RegionData) => {
+        //         console.log(data);
+        //     });
+
+
+        let body = JSON.stringify({ "RegionID":15,"RegionDescription":"trdsty" });
+        //let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+        headers.append('Cache-Control', 'no-cache');
+        headers.append('Accept', 'application/json');
+        let options = new RequestOptions({ headers: headers});
+
+        return this._http.post('http://localhost:37299/api/Region', body, options)
             .map(res => res.json())
+            .do(data => console.log(data))
             .catch(this.handleError);
+    }
+
+    updateRegionData(body:RegionData) {
+        let headers = new Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json;odata=verbose');
+        headers.append('Cache-Control', 'no-cache');
+        let bodyString = JSON.stringify(body); // Stringify payload 
+        //let options = new RequestOptions({ headers: headers, method: 'put', body : bodyString });
+
+        return this._http.put('http://localhost:37299/api/Region', bodyString, headers)
+            .map((res: Response) => res.json())
+            //.subscribe(data => console.log(data))
+            .do(data => console.log(data))
+            .subscribe((data: RegionData) => {
+                console.log(data);
+            });
     }
 
     deleteRegion(id:number) {

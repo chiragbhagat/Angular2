@@ -16,17 +16,17 @@
     </tbody>
   </table>
 
-  <form (submit)="submitForm()">
+  <form *ngIf="selectedRegion" >
       <div class="panel panel-primary">
         <div class="panel-heading">Region Add/Edit</div>
         <div class="panel-body">
           <div class="form-group">
-              <input type="text" class="form-control" placeholder="Region ID" name="RegionID">
+              <input type="text" class="form-control" placeholder="Region ID" name="RegionID" [(ngModel)]="selectedRegion.RegionID">
               <br />
-              <textarea class="form-control" rows="3" placeholder="Region Description" name="RegionDescription"></textarea>
+              <textarea class="form-control" rows="3" placeholder="Region Description" name="RegionDescription" [(ngModel)]="selectedRegion.RegionDescription"></textarea>
               <br />
-              <button type="submit" class="btn btn-primary">Add</button>
-              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="submit" class="btn btn-primary" (click)="AddRegion()">Add</button>
+              <button type="submit" class="btn btn-primary" (click)="UpdateRegion()">Update</button>
               <button type="submit" class="btn btn-warning">Delete</button>
           </div>
         </div>
