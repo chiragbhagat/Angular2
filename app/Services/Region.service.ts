@@ -91,7 +91,7 @@ export class RegionService {
         headers.append('Accept', 'application/json');
         let options = new RequestOptions({ headers: headers});
 
-        return this._http.post('http://localhost:37299/api/Region', body, options)
+        return this._http.post('http://northwindapi.codebhagat.com/api/Region', body, options)
             .map(res => res.json())
             .do(data => console.log(data))
             .catch(this.handleError);
@@ -105,7 +105,7 @@ export class RegionService {
         let bodyString = JSON.stringify(body); // Stringify payload 
         //let options = new RequestOptions({ headers: headers, method: 'put', body : bodyString });
 
-        return this._http.put('http://localhost:37299/api/Region', bodyString, headers)
+        return this._http.put('http://northwindapi.codebhagat.com/api/Region', bodyString, headers)
             .map((res: Response) => res.json())
             //.subscribe(data => console.log(data))
             .do(data => console.log(data))
