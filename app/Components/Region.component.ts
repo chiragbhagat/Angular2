@@ -14,12 +14,15 @@ export class RegionComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
   //@Input() productId: number;
   regions: RegionData[];
+  newRegion: RegionData;
   selectedRegion: RegionData;
   messages: string[] = [];
   errorMessage: string;
   message: string;
-  
+  showAdd: boolean;
+
   constructor(private _router: Router, private regionService: RegionService) {
+    this.newRegion = new RegionData(0, "");
   }
 
   ngOnInit() {
@@ -32,8 +35,35 @@ export class RegionComponent implements OnInit {
      this.regionService.getAll().subscribe(record => this.regions=record);
   }
 
+  addRegion() {
+    this.regionService.addRegionData(this.newRegion).subscribe(record => console.log(record));
+    this.hideAddRegion();
+    this.getRegions();
+  }
+  
+  updateRegion() {
+    this.regionService.updateRegionData(this.selectedRegion).subscribe(record => console.log(record));
+    
+    this.getRegions();
+  }
+
+  deleteRegion(id: number) {
+    this.regionService.deleteRegion(id).subscribe(record => console.log(record));
+    this.getRegions();
+  }
+
   SelectRegion(item: RegionData) {
       this.selectedRegion = item;
+  }
+
+  showAddRegion()
+  {
+    this.showAdd = true;
+  }
+
+  hideAddRegion()
+  {
+    this.showAdd = false;
   }
 
   log(msg: string) {

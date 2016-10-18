@@ -93,7 +93,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
                     var headers1 = new http_1.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_1.RequestOptions({ headers: headers1, method: "post" });
-                    return this._http.post('POST URL', bodyString, options)
+                    return this._http.post('http://northwindapi.codebhagat.com/api/Region/', bodyString, options)
                         .map(function (res) { return res.json(); })
                         .catch(this.handleError);
                 };
@@ -102,8 +102,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
                     var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
                     var headers1 = new http_1.Headers({ 'Content-Type': 'application/json' });
-                    var options = new http_1.RequestOptions({ headers: headers1, method: "post" });
-                    return this._http.put('PUT URL', bodyString, options)
+                    var options = new http_1.RequestOptions({ headers: headers1, method: "put" });
+                    return this._http.put('http://northwindapi.codebhagat.com/api/Region/', bodyString, options)
                         .map(function (res) { return res.json(); })
                         .catch(this.handleError);
                 };
@@ -113,7 +113,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
                     var headers1 = new http_1.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_1.RequestOptions({ headers: headers1, method: "post" });
-                    return this._http.delete('http://northwindapi.codebhagat.com/api/Region/${id}')
+                    return this._http.delete("http://northwindapi.codebhagat.com/api/Region/" + id)
                         .map(function (res) { return res.json(); })
                         .catch(this.handleError);
                 };

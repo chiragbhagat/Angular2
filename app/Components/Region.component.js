@@ -32,6 +32,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                     this._router = _router;
                     this.regionService = regionService;
                     this.messages = [];
+                    this.newRegion = new Region_service_1.RegionData(0, "");
                 }
                 RegionComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -41,6 +42,28 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                 RegionComponent.prototype.getRegions = function () {
                     var _this = this;
                     this.regionService.getAll().subscribe(function (record) { return _this.regions = record; });
+                };
+                RegionComponent.prototype.addRegion = function () {
+                    this.regionService.addRegionData(this.newRegion).subscribe(function (record) { return console.log(record); });
+                    this.hideAddRegion();
+                    this.getRegions();
+                };
+                RegionComponent.prototype.updateRegion = function () {
+                    this.regionService.updateRegionData(this.selectedRegion).subscribe(function (record) { return console.log(record); });
+                    this.getRegions();
+                };
+                RegionComponent.prototype.deleteRegion = function (id) {
+                    this.regionService.deleteRegion(id).subscribe(function (record) { return console.log(record); });
+                    this.getRegions();
+                };
+                RegionComponent.prototype.SelectRegion = function (item) {
+                    this.selectedRegion = item;
+                };
+                RegionComponent.prototype.showAddRegion = function () {
+                    this.showAdd = true;
+                };
+                RegionComponent.prototype.hideAddRegion = function () {
+                    this.showAdd = false;
                 };
                 RegionComponent.prototype.log = function (msg) {
                     this.messages.splice(0, 0, msg);

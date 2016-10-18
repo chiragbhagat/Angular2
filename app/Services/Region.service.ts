@@ -67,38 +67,38 @@ export class RegionService {
             .catch(this.handleError);
     }
     
-    addRegionData(body:Object) {
+    addRegionData(body:RegionData) : Observable<RegionData> {
         let bodyString = JSON.stringify(body); // Stringify payload 
         //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let headers1 = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers1, method: "post" });
  
-        return this._http.post('POST URL', bodyString, options)
+        return this._http.post('http://northwindapi.codebhagat.com/api/Region/', bodyString, options)
             .map(res => res.json())
             .catch(this.handleError);
     }
 
-    updateRegionData(body:Object) {
+    updateRegionData(body:RegionData) : Observable<RegionData> {
         let bodyString = JSON.stringify(body); // Stringify payload 
         //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let headers1 = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers1, method: "post" });
+        let options = new RequestOptions({ headers: headers1, method: "put" });
  
-        return this._http.put('PUT URL', bodyString, options)
+        return this._http.put('http://northwindapi.codebhagat.com/api/Region/', bodyString, options)
             .map(res => res.json())
             .catch(this.handleError);
     }
 
-    deleteRegion(id:number) {
+    deleteRegion(id:number) : Observable<Object>{
         //let bodyString = JSON.stringify(body); // Stringify payload 
         //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let headers1 = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers1, method: "post" });
  
-        return this._http.delete('http://northwindapi.codebhagat.com/api/Region/${id}')
+        return this._http.delete(`http://northwindapi.codebhagat.com/api/Region/${id}`)
             .map(res => res.json())
             .catch(this.handleError);
     }
