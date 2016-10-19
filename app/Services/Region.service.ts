@@ -64,9 +64,10 @@ export class RegionService {
  
         return this._http.post('POST URL', body,options)
             .map(res => res.json())
+            .do(data => console.log(data))
             .catch(this.handleError);
     }
-    
+
     addRegionData(body:RegionData) : Observable<RegionData> {
         let bodyString = JSON.stringify(body); // Stringify payload 
         //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
@@ -74,7 +75,7 @@ export class RegionService {
         let headers1 = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers1, method: "post" });
  
-        return this._http.post('http://northwindapi.codebhagat.com/api/Region/', bodyString, options)
+        return this._http.post('http://northwindapi.codebhagat.com/api/Region', bodyString, options)
             .map(res => res.json())
             .catch(this.handleError);
     }

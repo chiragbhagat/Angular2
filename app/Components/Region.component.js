@@ -65,6 +65,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                 RegionComponent.prototype.hideAddRegion = function () {
                     this.showAdd = false;
                 };
+                RegionComponent.prototype.submitForm = function (data) {
+                    console.log(data);
+                };
                 RegionComponent.prototype.log = function (msg) {
                     this.messages.splice(0, 0, msg);
                     console.log(msg);

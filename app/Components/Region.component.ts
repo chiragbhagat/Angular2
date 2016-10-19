@@ -43,7 +43,6 @@ export class RegionComponent implements OnInit {
   
   updateRegion() {
     this.regionService.updateRegionData(this.selectedRegion).subscribe(record => console.log(record));
-    
     this.getRegions();
   }
 
@@ -64,6 +63,10 @@ export class RegionComponent implements OnInit {
   hideAddRegion()
   {
     this.showAdd = false;
+  }
+
+  submitForm(data: Object) {
+    console.log(data);
   }
 
   log(msg: string) {

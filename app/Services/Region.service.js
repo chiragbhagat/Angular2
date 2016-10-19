@@ -85,6 +85,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     var options = new http_1.RequestOptions({ headers: headers, method: "post" });
                     return this._http.post('POST URL', body, options)
                         .map(function (res) { return res.json(); })
+                        .do(function (data) { return console.log(data); })
                         .catch(this.handleError);
                 };
                 RegionService.prototype.addRegionData = function (body) {
@@ -93,7 +94,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
                     var headers1 = new http_1.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_1.RequestOptions({ headers: headers1, method: "post" });
-                    return this._http.post('http://northwindapi.codebhagat.com/api/Region/', bodyString, options)
+                    return this._http.post('http://northwindapi.codebhagat.com/api/Region', bodyString, options)
                         .map(function (res) { return res.json(); })
                         .catch(this.handleError);
                 };
