@@ -1,0 +1,72 @@
+System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Services/Region.service'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
+    var core_1, router_1, http_1, Region_service_1;
+    var RegionEditComponent;
+    return {
+        setters:[
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (Region_service_1_1) {
+                Region_service_1 = Region_service_1_1;
+            }],
+        execute: function() {
+            RegionEditComponent = (function () {
+                function RegionEditComponent(params, _router, regionService) {
+                    var _this = this;
+                    this.params = params;
+                    this._router = _router;
+                    this.regionService = regionService;
+                    this.messages = [];
+                    this.id = parseInt(params.get('id'));
+                    this.regionService.getByID(this.id).subscribe(function (record) { return _this.selectedRegion = record; });
+                }
+                RegionEditComponent.prototype.ngOnInit = function () {
+                    this.message = "This is test!!!!";
+                };
+                RegionEditComponent.prototype.addRegion = function () {
+                    this.regionService.addRegionData(this.selectedRegion).subscribe(function (record) { return console.log(record); });
+                };
+                RegionEditComponent.prototype.updateRegion = function () {
+                    this.regionService.updateRegionData(this.selectedRegion).subscribe(function (record) { return console.log(record); });
+                };
+                RegionEditComponent.prototype.log = function (msg) {
+                    this.messages.splice(0, 0, msg);
+                    console.log(msg);
+                };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Number)
+                ], RegionEditComponent.prototype, "regionId", void 0);
+                RegionEditComponent = __decorate([
+                    core_1.Component({
+                        selector: 'my-region-edit',
+                        templateUrl: 'app/Views/RegionEdit.html',
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        providers: [http_1.HTTP_PROVIDERS, Region_service_1.RegionService]
+                    }), 
+                    __metadata('design:paramtypes', [router_1.RouteParams, router_1.Router, Region_service_1.RegionService])
+                ], RegionEditComponent);
+                return RegionEditComponent;
+            }());
+            exports_1("RegionEditComponent", RegionEditComponent);
+        }
+    }
+});
+//# sourceMappingURL=RegionEdit.component.js.map

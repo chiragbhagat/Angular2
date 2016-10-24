@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, http_1, Region_service_1;
+    var core_1, router_1, http_1, Region_service_1, router_2;
     var RegionComponent;
     return {
         setters:[
@@ -19,6 +19,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+                router_2 = router_1_1;
             },
             function (http_1_1) {
                 http_1 = http_1_1;
@@ -76,6 +77,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', '../Servic
                     core_1.Component({
                         selector: 'my-region',
                         templateUrl: 'app/Views/Region.html',
+                        directives: [router_2.ROUTER_DIRECTIVES],
                         providers: [http_1.HTTP_PROVIDERS, Region_service_1.RegionService]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, Region_service_1.RegionService])
