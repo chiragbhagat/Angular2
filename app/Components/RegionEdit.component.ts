@@ -13,21 +13,25 @@ import { RegionData, RegionService } from '../Services/Region.service';
 
 export class RegionEditComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
-  @Input() regionId: number;
+  //@Input() regionId: number;
   selectedRegion: RegionData;
   messages: string[] = [];
   errorMessage: string;
   message: string;
-  showAdd: boolean;
+  showEdit: boolean;
   id: number;
+
 
   constructor(private params: RouteParams, private _router: Router, private regionService: RegionService) {
 	  this.id = parseInt(params.get('id'));
-		this.regionService.getByID(this.id).subscribe(record => this.selectedRegion = record);
   }
 
   ngOnInit() {
       this.message = "This is test!!!!";
+      this.regionService.getByID(this.id).subscribe(record => this.selectedRegion=record);
+    if (this.selectedRegion) {
+      this.showEdit = true;
+    }
   }
  
   addRegion() {

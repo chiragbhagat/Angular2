@@ -30,6 +30,7 @@ export class RegionComponent implements OnInit {
   ngOnInit() {
       this.message = "This is test!!!!";
       this.regionService.getAll().subscribe(record => this.regions=record);
+      this.regionService.getByID(1).subscribe(record => this.selectedRegion=record);
 
   }
 

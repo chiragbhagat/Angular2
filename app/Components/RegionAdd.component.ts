@@ -31,7 +31,6 @@ export class RegionAddComponent implements OnInit {
  
   addRegion() {
     this.regionService.addRegionData(this.newRegion).subscribe(record => this._router.navigate(['/Region']));
-    
   }
   
   /*
