@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Rx';
 import { Router } from 'angular2/router';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { RegionData, RegionService } from '../Services/Region.service';
-import { RegionComponent } from '../Components/Region.Component';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
@@ -22,7 +21,7 @@ export class RegionAddComponent implements OnInit {
   message: string;
   showAdd: boolean;
 
-  constructor(private _router: Router, private regionService: RegionService, private regionComponent : RegionComponent) {
+  constructor(private _router: Router, private regionService: RegionService) {
     this.newRegion = new RegionData(0, "");
   }
 
@@ -31,7 +30,8 @@ export class RegionAddComponent implements OnInit {
   }
  
   addRegion() {
-    this.regionService.addRegionData(this.newRegion).subscribe(record => console.log(record));
+    this.regionService.addRegionData(this.newRegion).subscribe(record => this._router.navigate(['/Region']));
+    
   }
   
   /*
