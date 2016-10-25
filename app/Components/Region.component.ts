@@ -33,7 +33,7 @@ export class RegionComponent implements OnInit {
 
   }
 
-  getRegions() {
+  public getRegions() {
      this.regionService.getAll().subscribe(record => this.regions=record);
   }
 
@@ -51,10 +51,7 @@ export class RegionComponent implements OnInit {
   deleteRegion(id: number) {
     window.confirm("Are you sure you want to delete this region.") 
     {
-        this.regionService.deleteRegion(id).subscribe(record => {
-          this.getRegions();
-          console.log(record);
-      });
+        this.regionService.deleteRegion(id).subscribe(record => this.getRegions());
     }
   }
 

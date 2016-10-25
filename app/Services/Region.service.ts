@@ -50,7 +50,7 @@ export class RegionService {
 
     getByID(id: number) : Observable<RegionData> {
         return this._http
-            .get('http://northwindapi.codebhagat.com/api/Region/' + id, {headers: this.getHeaders()})
+            .get(`http://northwindapi.codebhagat.com/api/Region/${id}`, {headers: this.getHeaders()})
             .map(response => response.json())
             .do(data => console.log(data))
             .catch(this.handleError);
@@ -97,10 +97,10 @@ export class RegionService {
         //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let headers1 = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers1, method: "post" });
+        let options = new RequestOptions({ headers: headers1, method: "DELETE" });
  
         return this._http.delete(`http://northwindapi.codebhagat.com/api/Region/${id}`)
-            .map(res => res.json())
+            .map(res => res)
             .catch(this.handleError);
     }
 
