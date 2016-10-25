@@ -1,7 +1,8 @@
 <div class="grid grid-pad">
   <h1>Regions List</h1>
   <div *ngIf="selectedRegion">Region Name: {{selectedRegion.RegionDescription}} (ID: {{selectedRegion.RegionID}})</div>
-  <button class="btn btn-primary" (click)="showAddRegion()">Add</button><br>
+  <!--button class="btn btn-primary" (click)="showAddRegion()">Add</button><br-->
+  <a [routerLink]="['/RegionAdd']" class="btn btn-primary"><i class="fa fa-plus"></i>Add</a>
   <table class="table table-bordered table-striped table-condensed">
     <tr> 
       <th>Action</th>
@@ -10,7 +11,13 @@
     </tr>
     <tbody>
       <tr *ngFor="#item of regions">
-        <td style="width: 100px"><a (click)="SelectRegion(item)">Edit</a> <a (click)="deleteRegion(item.RegionID)">Delete</a></td>
+        <td style="width: 100px">
+            <!--a (click)="SelectRegion(item)">Edit</a--> 
+            <a href="" [routerLink]="['/RegionEdit', {id: item.RegionID}]">
+              <i class="fa fa-pencil"> Edit</i>
+            </a>
+            <a (click)="deleteRegion(item.RegionID)">Delete</a>
+        </td>
         <td>{{item.RegionID}}</td>
         <td>{{item.RegionDescription}}</td>
       </tr>

@@ -19,6 +19,8 @@ import { ProductComponent } from './Components/Product.component';
 //import { ProductsMainComponent } from './Components/ProductsMain.component';
 import { ProductsListComponent } from './Components/ProductsList.component';
 import { RegionComponent } from './Components/Region.component';
+import { RegionAddComponent } from './Components/RegionAdd.component';
+import { RegionEditComponent } from './Components/RegionEdit.component';
 import { GraphComponent } from './Components/Graph.component';
 import { SettingsComponent } from './Components/Settings.component';
 import { CalendarComponent } from './Components/Calendar.component';
@@ -45,6 +47,8 @@ import { LoginComponent } from './Components/Account/Login.component';
   //{ path: '/Product', name: 'Product', component: ProductComponent },
   { path: '/Products', name: 'Products', component: ProductsListComponent },
   { path: '/Region', name: 'Region', component: RegionComponent },
+  { path: '/Region/Add', name: 'RegionAdd', component: RegionAddComponent },
+  { path: '/Region/Edit/:id', name: 'RegionEdit', component: RegionEditComponent },
   { path: '/Inbox', name: 'Inbox', component: InboxComponent },
   { path: '/Graphs', name: 'Graphs', component: GraphComponent },
   { path: '/Calendar', name: 'Calendar', component: CalendarComponent },
