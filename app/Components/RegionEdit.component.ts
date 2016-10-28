@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output, OnInit } from 'angular2/core';
 import { Observable } from 'rxjs/Rx';
-import { Router, RouteParams, ROUTER_DIRECTIVES } from 'angular2/router';
+import { Router, RouteParams } from 'angular2/router';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { RegionData, RegionService } from '../Services/Region.service';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
   selector: 'my-region-edit',
@@ -24,23 +25,19 @@ export class RegionEditComponent implements OnInit {
 
   constructor(private params: RouteParams, private _router: Router, private regionService: RegionService) {
 	  this.id = parseInt(params.get('id'));
+    this.selectedRegion = new RegionData(0, "" );
   }
 
   ngOnInit() {
       this.message = "This is test!!!!";
       this.regionService.getByID(this.id).subscribe(record => this.selectedRegion=record);
-    if (this.selectedRegion) {
-      this.showEdit = true;
-    }
+      if (this.selectedRegion) {
+        this.showEdit = true;
+      }
   }
  
-  addRegion() {
-    this.regionService.addRegionData(this.selectedRegion).subscribe(record => console.log(record));
-  }
-  
-  
   updateRegion() {
-    this.regionService.updateRegionData(this.selectedRegion).subscribe(record => console.log(record));
+    this.regionService.updateRegionData(this.selectedRegion).subscribe(record => this._router.navigate(['/Region']));
   }
 
   log(msg: string) {

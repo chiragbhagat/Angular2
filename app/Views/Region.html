@@ -13,9 +13,7 @@
       <tr *ngFor="#item of regions">
         <td style="width: 100px">
             <!--a (click)="SelectRegion(item)">Edit</a--> 
-            <a href="" [routerLink]="['/RegionEdit', {id: item.RegionID}]">
-              <i class="fa fa-pencil"> Edit</i>
-            </a>
+            <a href="" [routerLink]="['/RegionEdit', {id: item.RegionID}]">Edit</a>
             <a (click)="deleteRegion(item.RegionID)">Delete</a>
         </td>
         <td>{{item.RegionID}}</td>
@@ -24,6 +22,7 @@
     </tbody>
   </table>
 
+<!--
   <form *ngIf="selectedRegion" >
       <div class="panel panel-primary">
         <div class="panel-heading">Region Edit</div>
@@ -53,5 +52,6 @@
         </div>
       </div>
   </form>
+  -->
 </div>
  

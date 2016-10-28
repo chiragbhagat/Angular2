@@ -87,7 +87,7 @@ export class RegionService {
         let headers1 = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers1, method: "put" });
  
-        return this._http.put('http://northwindapi.codebhagat.com/api/Region/', bodyString, options)
+        return this._http.put('http://northwindapi.codebhagat.com/api/Region', bodyString, options)
             .map(res => res.json())
             .catch(this.handleError);
     }
