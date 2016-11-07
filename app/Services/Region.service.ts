@@ -88,7 +88,7 @@ export class RegionService {
         let options = new RequestOptions({ headers: headers1, method: "put" });
  
         return this._http.put('http://northwindapi.codebhagat.com/api/Region', bodyString, options)
-            .map(res => res.json())
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
@@ -113,6 +113,16 @@ export class RegionService {
         return headers;
     }
 
+    private extractData(res: Response) {
+        let body: any;
+
+        // check if empty, before call json
+        if (res.text()) {
+            body = res.json();
+        }
+        return body || { };
+    }
+    
     handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error.');
@@ -145,10 +155,7 @@ export class RegionService {
 
 
 /*
-    private extractData(res: Response) {
-        let body = res.json();
-        return body.data || { };
-    }
+    
 
     
     private handleError1 (error: any) {

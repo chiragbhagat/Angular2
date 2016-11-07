@@ -37,7 +37,11 @@ export class RegionEditComponent implements OnInit {
   }
  
   updateRegion() {
-    this.regionService.updateRegionData(this.selectedRegion).subscribe(record => this._router.navigate(['/Region']));
+    this.regionService.updateRegionData(this.selectedRegion)
+      .subscribe(record => this._router.navigate(['/Region']), 
+                (err) => { console.log("ERROR: "+err); },
+                () => { console.log("Region updated successfully..."); }
+                );
   }
 
   log(msg: string) {

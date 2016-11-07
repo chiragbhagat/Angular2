@@ -30,7 +30,11 @@ export class RegionAddComponent implements OnInit {
   }
  
   addRegion() {
-    this.regionService.addRegionData(this.newRegion).subscribe(record => this._router.navigate(['/Region']));
+    this.regionService.addRegionData(this.newRegion)
+        .subscribe(record => this._router.navigate(['/Region']), 
+                (err) => { console.log("ERROR: " + err); },
+                () => { console.log("Region added successfully..."); }
+                );
   }
   
   /*
