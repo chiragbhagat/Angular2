@@ -1,9 +1,0 @@
-# ignore a file type
-*.json
-*.js
-*.js.map
-*.component.js
-*.component.js.map
-*.service.js
-*.service.js.map
-npm-debug.log.*
