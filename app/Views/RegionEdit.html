@@ -7,9 +7,15 @@
               <input type="text" class="form-control" placeholder="Region ID" name="RegionID" [(ngModel)]="selectedRegion.RegionID">
               <br />
               <textarea class="form-control" rows="3" placeholder="Region Description" name="RegionDescription" [(ngModel)]="selectedRegion.RegionDescription"></textarea>
-              <br />
+          </div>
+        </div>
+        <div class="panel-footer clearfix">
+          <div class="pull-right">
               <button class="btn btn-primary" (click)="updateRegion()">Save</button>
-			        <a class="btn btn-primary" [routerLink]="['/Region']">Cancel</a>
+			        <a class="btn btn-primary" [routerLink]="['Region']">Cancel</a>
+          </div>
+          <div class="pull-left">
+            <a class="btn btn-danger" (click)="deleteRegion(selectedRegion.RegionID)">Delete</a>
           </div>
         </div>
       </div>

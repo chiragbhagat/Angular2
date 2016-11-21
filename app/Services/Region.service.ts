@@ -1,7 +1,8 @@
 import { Injectable } from 'angular2/core';
 import { Http, Response, Headers, RequestOptions } from 'angular2/http';
 import { Observable } from 'rxjs/Rx';
- 
+import myGlobals = require('../globals');
+
 export class RegionData {
     /*constructor(public id: number,
         public name: string,
@@ -21,15 +22,22 @@ export class RegionService {
     baseUrl: string;
 
     constructor(private _http: Http) {
-        
+	    this.baseUrl = myGlobals.baseApiUrl;
     }
 
     getAll() : Observable<RegionData[]> {
-        return this._http
-            .get('http://northwindapi.codebhagat.com/api/Region', {headers: this.getHeaders()})
-            .map(response => response.json())
-            .do(data => console.log(data))
-            .catch(this.handleError);
+   
+		return this._http
+			.get(this.baseUrl + 'api/Region', { headers: this.getHeaders() })
+			.map(response => response.json())
+			.do(data => console.log(data))
+			.catch(this.handleError);
+		// http://localhost:37299/api/Region
+		//     return this._http
+   //         .get('http://northwindapi.codebhagat.com/api/Region', {headers: this.getHeaders()})
+   //         .map(response => response.json())
+   //         .do(data => console.log(data))
+			//.catch(this.handleError);
     }
 
     getAllBy(filterExpression: string) : Observable<RegionData[]> {
@@ -50,7 +58,7 @@ export class RegionService {
 
     getByID(id: number) : Observable<RegionData> {
         return this._http
-            .get(`http://northwindapi.codebhagat.com/api/Region/${id}`, {headers: this.getHeaders()})
+			.get(`http://northwindapi.codebhagat.com/api/Region/${id}`, {headers: this.getHeaders()})
             .map(response => response.json())
             .do(data => console.log(data))
             .catch(this.handleError);

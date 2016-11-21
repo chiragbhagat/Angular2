@@ -22,7 +22,6 @@ export class RegionEditComponent implements OnInit {
   showEdit: boolean;
   id: number;
 
-
   constructor(private params: RouteParams, private _router: Router, private regionService: RegionService) {
 	  this.id = parseInt(params.get('id'));
     this.selectedRegion = new RegionData(0, "" );
@@ -38,10 +37,21 @@ export class RegionEditComponent implements OnInit {
  
   updateRegion() {
     this.regionService.updateRegionData(this.selectedRegion)
-      .subscribe(record => this._router.navigate(['/Region']), 
+      .subscribe(record => this._router.navigate(['Region']), 
                 (err) => { console.log("ERROR: "+err); },
                 () => { console.log("Region updated successfully..."); }
                 );
+  }
+
+  deleteRegion(id: number) {
+    if (window.confirm("Are you sure you want to delete this region.") == true) 
+    {
+        this.regionService.deleteRegion(id)
+          .subscribe(record => this._router.navigate(['Region']),
+                (err) => { console.log("ERROR: "+ err); },
+                () => { console.log("Region deleted successfully..."); }
+                );
+    }
   }
 
   log(msg: string) {
