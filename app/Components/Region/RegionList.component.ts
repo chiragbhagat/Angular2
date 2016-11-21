@@ -2,12 +2,12 @@ import { Component, EventEmitter, Input, Output, OnInit } from 'angular2/core';
 import { Observable } from 'rxjs/Rx';
 import { Router } from 'angular2/router';
 import { HTTP_PROVIDERS } from 'angular2/http';
-import { RegionData, RegionService } from '../Services/Region.service';
+import { RegionData, RegionService } from '../../Services/Region.service';
 import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 
 @Component({
   selector: 'my-region',
-  templateUrl: 'app/Views/RegionList.html' , 
+  templateUrl: 'app/Views/Region/RegionList.html' , 
   directives: [ROUTER_DIRECTIVES, ROUTER_DIRECTIVES],
   providers: [HTTP_PROVIDERS, RegionService]
 })

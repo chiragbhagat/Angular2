@@ -18,7 +18,7 @@ import { ForgotPasswordComponent } from './Components/Account/ForgotPassword.com
 import { ProductComponent } from './Components/Product.component';
 //import { ProductsMainComponent } from './Components/ProductsMain.component';
 import { ProductsListComponent } from './Components/ProductsList.component';
-import { RegionComponent } from './Components/Region.component';
+import { RegionComponent } from './Components/Region/Region.component';
 //import { RegionListComponent } from './Components/RegionList.component';
 //import { RegionAddComponent } from './Components/RegionAdd.component';
 //import { RegionEditComponent } from './Components/RegionEdit.component';
