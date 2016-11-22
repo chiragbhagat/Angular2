@@ -15,7 +15,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 export class RegionEditComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
   //@Input() regionId: number;
-  selectedRegion: RegionData;
+  objRegion: RegionData;
   messages: string[] = [];
   errorMessage: string;
   message: string;
@@ -24,19 +24,19 @@ export class RegionEditComponent implements OnInit {
 
   constructor(private params: RouteParams, private _router: Router, private regionService: RegionService) {
 	  this.id = parseInt(params.get('id'));
-    this.selectedRegion = new RegionData(0, "" );
+    this.objRegion = new RegionData(0, "" );
   }
 
   ngOnInit() {
       this.message = "This is test!!!!";
-      this.regionService.getByID(this.id).subscribe(record => this.selectedRegion=record);
-      if (this.selectedRegion) {
+      this.regionService.getByID(this.id).subscribe(record => this.objRegion=record);
+      if (this.objRegion) {
         this.showEdit = true;
       }
   }
  
   updateRegion() {
-    this.regionService.updateRegionData(this.selectedRegion)
+    this.regionService.updateRegionData(this.objRegion)
       .subscribe(record => this._router.navigate(['Region']), 
                 (err) => { console.log("ERROR: "+err); },
                 () => { console.log("Region updated successfully..."); }

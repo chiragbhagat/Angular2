@@ -15,14 +15,14 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 export class RegionAddComponent implements OnInit {
   //@Output() changed = new EventEmitter<ProductsData>();
   //@Input() productId: number;
-  newRegion: RegionData;
+  objRegion: RegionData;
   messages: string[] = [];
   errorMessage: string;
   message: string;
   showAdd: boolean;
 
   constructor(private _router: Router, private regionService: RegionService) {
-    this.newRegion = new RegionData(0, "");
+    this.objRegion = new RegionData(0, "");
   }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class RegionAddComponent implements OnInit {
   }
  
   addRegion() {
-    this.regionService.addRegionData(this.newRegion)
+    this.regionService.addRegionData(this.objRegion)
         .subscribe(record => this._router.navigate(['Region']), 
                 (err) => { console.log("ERROR: " + err); },
                 () => { console.log("Region added successfully..."); }

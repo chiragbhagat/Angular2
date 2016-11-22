@@ -40,7 +40,7 @@ export class ProductComponent implements OnInit {
   }
 
   getProducts() {
-
+    
      this.productsService.getAll().subscribe(record => this.products=record);
      this.productsService.getByID(1).subscribe(record => this.selectedProduct=record);
 

@@ -26,9 +26,9 @@ export class RegionService {
     }
 
     getAll() : Observable<RegionData[]> {
-   
+        let url = this.baseUrl + 'api/Region';
 		return this._http
-			.get(this.baseUrl + 'api/Region', { headers: this.getHeaders() })
+			.get(url, { headers: this.getHeaders() })
 			.map(response => response.json())
 			.do(data => console.log(data))
 			.catch(this.handleError);
@@ -41,31 +41,33 @@ export class RegionService {
     }
 
     getAllBy(filterExpression: string) : Observable<RegionData[]> {
+        let url = this.baseUrl + 'api/Region?filterExpression=${filterExpression}';
         return this._http
-            .get('http://northwindapi.codebhagat.com/api/Region?filterExpression=${filterExpression}', {headers: this.getHeaders()})
+            .get(url, {headers: this.getHeaders()})
             .map(response => response.json())
             .do(data => console.log(data))
             .catch(this.handleError);
     }
 
     getAllByPaging(filterExpression: string) : Observable<RegionData[]> {
+        let url = this.baseUrl + 'api/Region?filterExpression=&sortExpression=RegionID&pageIndex=1&pageSize=10';
         return this._http
-            .get('http://northwindapi.codebhagat.com/api/Region?filterExpression=&sortExpression=RegionID&pageIndex=1&pageSize=10', {headers: this.getHeaders()})
+            .get(url, {headers: this.getHeaders()})
             .map(response => response.json())
             .do(data => console.log(data))
             .catch(this.handleError);
     }
 
     getByID(id: number) : Observable<RegionData> {
+        let url = `${this.baseUrl}api/Region/${id}`;
         return this._http
-			.get(`http://northwindapi.codebhagat.com/api/Region/${id}`, {headers: this.getHeaders()})
+			.get(url, {headers: this.getHeaders()})
             .map(response => response.json())
             .do(data => console.log(data))
             .catch(this.handleError);
     }
 
     addRegion(regionID:number,regionDescription:string){
- 
         let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers, method: "post" });
@@ -78,36 +80,28 @@ export class RegionService {
 
     addRegionData(body:RegionData) : Observable<RegionData> {
         let bodyString = JSON.stringify(body); // Stringify payload 
-        //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        let headers1 = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers1, method: "post" });
+        let options = new RequestOptions({ headers: this.getHeaders(), method: "post" });
+        let url = this.baseUrl + 'api/Region';
  
-        return this._http.post('http://northwindapi.codebhagat.com/api/Region', bodyString, options)
+        return this._http.post(url, bodyString, options)
             .map(res => res.json())
             .catch(this.handleError);
     }
 
     updateRegionData(body:RegionData) : Observable<RegionData> {
         let bodyString = JSON.stringify(body); // Stringify payload 
-        //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        let headers1 = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers1, method: "put" });
- 
-        return this._http.put('http://northwindapi.codebhagat.com/api/Region', bodyString, options)
+        let options = new RequestOptions({ headers: this.getHeaders(), method: "put" });
+        let url = this.baseUrl + 'api/Region';
+
+        return this._http.put(url, bodyString, options)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     deleteRegion(id:number) : Observable<Object>{
-        //let bodyString = JSON.stringify(body); // Stringify payload 
-        //let body = JSON.stringify({ "RegionID":regionID,"RegionDescription":regionDescription });
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        let headers1 = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers1, method: "DELETE" });
+        let url = `${this.baseUrl}api/Region/${id}`;
  
-        return this._http.delete(`http://northwindapi.codebhagat.com/api/Region/${id}`)
+        return this._http.delete(url)
             .map(res => res)
             .catch(this.handleError);
     }
@@ -115,9 +109,11 @@ export class RegionService {
     getHeaders(){
         let headers = new Headers();
         headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
         //headers.append('Access-Control-Allow-Headers', 'Content-Type');
         //headers.append('Access-Control-Allow-Methods', 'GET');
         //headers.append('Access-Control-Allow-Origin', '*');
+        //let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         return headers;
     }
 
